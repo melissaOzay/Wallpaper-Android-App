@@ -15,7 +15,7 @@ AppCompatActivity() {
 
 
     lateinit var binding: B
-    open fun initialize() {}//
+    open fun initialize() {}
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel.loadingState.observe(this) {
