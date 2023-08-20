@@ -7,6 +7,7 @@ import androidx.activity.viewModels
 import com.example.havucwallpapernewversion.MainActivity
 import com.example.havucwallpapernewversion.base.BaseActivity
 import com.example.havucwallpapernewversion.databinding.ActivitySplashBinding
+import com.example.havucwallpapernewversion.screens.images.ImageScreenActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -20,7 +21,7 @@ class SplashActivity : BaseActivity<SplashVM,ActivitySplashBinding>() {
     override fun initialize() {
         super.initialize()
         Handler(Looper.getMainLooper()).postDelayed({
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, ImageScreenActivity::class.java))
             finish()
         }, 3000)
     }
