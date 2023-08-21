@@ -13,8 +13,8 @@
         />
 
     <View
-        android:layout_width="0.5dp"
-        android:layout_height="0.5dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
         android:backgroundTint="@color/onBackgroundColor"
         app:layout_constraintBottom_toBottomOf="@+id/container"
         app:layout_constraintEnd_toEndOf="parent"
@@ -27,10 +27,9 @@
         android:id="@+id/bottomNav"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_alignParentBottom="true"
-        android:scrollIndicators="left"
-        android:backgroundTint="@color/backgroundColor"
         app:layout_constraintEnd_toEndOf="parent"
+        style="@style/Widget.MaterialComponents.BottomNavigationView.Colored"
+        app:labelVisibilityMode="unlabeled"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/container"
