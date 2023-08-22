@@ -2,7 +2,9 @@ package com.example.havucwallpapernewversion.data
 
 import android.content.Context
 import android.util.Log
-import com.example.havucwallpapernewversion.feature.data.api.ImageService
+import com.example.havucwallpapernewversion.CoreLocalHelper
+import com.example.havucwallpapernewversion.CoreLocalHelperImpl
+import com.example.havucwallpapernewversion.features.images.data.api.ImageService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -38,9 +40,7 @@ class NetworkModule {
                 val request: Request =
                     chain.request().newBuilder()
                         .addHeader("Authorization", "Bearer ${localHelper.getAuthorizationToken()}")
-                        .addHeader("app-language", "${localHelper.getCurrentLocale()}")
                         .build()
-               // Log.e("not","${localHelper.getCurrentLocale()}")
                 chain.proceed(request)
             })
             .addInterceptor(logging)
@@ -60,6 +60,7 @@ class NetworkModule {
     ): CoreLocalHelper {
         return CoreLocalHelperImpl(context)
     }
+
 
     @Provides
     @Singleton
