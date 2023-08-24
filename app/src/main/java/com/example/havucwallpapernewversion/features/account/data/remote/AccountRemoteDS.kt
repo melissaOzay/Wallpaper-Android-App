@@ -1,12 +1,9 @@
-package com.example.havucwallpapernewversion.features.account.data.api
+package com.example.havucwallpapernewversion.features.account.data.remote
 
 import com.example.havucwallpapernewversion.features.account.data.model.request.RegisterUserRequest
 import com.example.havucwallpapernewversion.features.account.data.model.response.BaseResponse
 import com.example.havucwallpapernewversion.features.account.data.model.response.RegisterUserResponse
-import retrofit2.http.Body
-import retrofit2.http.POST
 
-interface AccountService {
-    @POST("api/accounts")
-    suspend fun registerUser(@Body registerUserRequest: RegisterUserRequest): BaseResponse<RegisterUserResponse>
+interface AccountRemoteDS {
+    suspend fun registerUser(userRequest: RegisterUserRequest): BaseResponse<RegisterUserResponse>
 }

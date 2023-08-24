@@ -4,6 +4,8 @@ import android.content.Context
 import android.util.Log
 import com.example.havucwallpapernewversion.CoreLocalHelper
 import com.example.havucwallpapernewversion.CoreLocalHelperImpl
+import com.example.havucwallpapernewversion.data.local.LocalDS
+import com.example.havucwallpapernewversion.data.local.LocalDSImpl
 import com.example.havucwallpapernewversion.features.images.data.api.ImageService
 import dagger.Module
 import dagger.Provides
@@ -29,7 +31,7 @@ class NetworkModule {
     }
     @Provides
     @Singleton
-    fun provideRetrofit(gsonConverterFactory: GsonConverterFactory,localHelper: CoreLocalHelper): Retrofit {
+    fun provideRetrofit(gsonConverterFactory: GsonConverterFactory,localHelper: LocalDS): Retrofit {
         val logging = HttpLoggingInterceptor()
         logging.setLevel(HttpLoggingInterceptor.Level.BODY)
         val okHttpClient = OkHttpClient.Builder()
@@ -39,7 +41,7 @@ class NetworkModule {
             .addInterceptor(Interceptor { chain ->
                 val request: Request =
                     chain.request().newBuilder()
-                        .addHeader("Authorization", "Bearer ${localHelper.getAuthorizationToken()}")
+                        .addHeader("Authorization", "Bearer ${localHelper.getAuthorizationKey()}")
                         .build()
                 chain.proceed(request)
             })
@@ -60,12 +62,11 @@ class NetworkModule {
     ): CoreLocalHelper {
         return CoreLocalHelperImpl(context)
     }
-
-
-    @Provides
     @Singleton
-    fun provideService(retrofit: Retrofit): ImageService {
-        return retrofit.create(ImageService::class.java)
-    }
+    @Provides
+    fun provideLocalDS(
+        @ApplicationContext context: Context,
+    ): LocalDS = LocalDSImpl(context)
+
 
 }
