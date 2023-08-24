@@ -3,9 +3,14 @@ package com.example.havucwallpapernewversion.screens.images
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.activity.viewModels
+import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.havucwallpapernewversion.base.BaseFragment
 import com.example.havucwallpapernewversion.databinding.ActivityImageScreenBinding
 import com.example.havucwallpapernewversion.databinding.FragmentImageScreenBinding
+import com.example.havucwallpapernewversion.screens.images.adapter.ImageScreenAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -18,7 +23,9 @@ class ImageScreenFragment :BaseFragment<FragmentImageScreenBinding,ImageScreenVM
         return FragmentImageScreenBinding.inflate(layoutInflater)
     }
 
-    override val viewModel: ImageScreenVM
-        get() = ImageScreenVM()
+    override val viewModel: ImageScreenVM by viewModels()
+    override fun initUI() {
+        super.initUI()
 
+    }
 }

@@ -6,6 +6,6 @@ import com.example.havucwallpapernewversion.features.images.data.model.ImageResp
 import kotlinx.coroutines.flow.Flow
 
 interface ImageRepository {
-    suspend fun getImages(page: Int): BaseResponse<List<ImageResponse>>
+    suspend fun getImages(page: Int): Result<List<ImageResponse>>
 
 }

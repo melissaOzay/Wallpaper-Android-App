@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 import com.example.havucwallpapernewversion.screens.progressBar.LoadingDialog
+import dagger.hilt.android.AndroidEntryPoint
 
 abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel> : Fragment() {
     private var loadingDialog: LoadingDialog? = null
@@ -44,6 +45,7 @@ abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel> : Fragment() {
             } else {
                 loadingDialog?.hideLoading()
             }
+            initUI()
         }
         return binding.root
     }

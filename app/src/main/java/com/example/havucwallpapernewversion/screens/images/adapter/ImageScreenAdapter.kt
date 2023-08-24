@@ -6,21 +6,22 @@ import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.havucwallpapernewversion.R
+import com.example.havucwallpapernewversion.features.images.data.model.ImageResponse
 
 class ImageScreenAdapter :
     RecyclerView.Adapter<ImageScreenAdapter.CompanyViewHolder>() {
 
-    private var items = ArrayList<WordyEntity>()
+    private var items = ArrayList<ImageResponse>()
 
-    fun setListData(items: List<WordyEntity>) {
+    fun setListData(items: List<ImageResponse>) {
         this.items = ArrayList(items)
         notifyDataSetChanged()
     }
 
     class CompanyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val photo = view.findViewById<AppCompatImageView>(R.id.iv_photo)
--
-        fun bindItems(item: WordyEntity) {
+
+        fun bindItems(item: ImageResponse) {
         }
     }
 

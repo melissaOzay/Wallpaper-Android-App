@@ -1,14 +1,34 @@
 package com.example.havucwallpapernewversion.screens.splash
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.havucwallpapernewversion.base.BaseViewModel
+import com.example.havucwallpapernewversion.features.account.data.model.request.RegisterUserRequest
+import com.example.havucwallpapernewversion.features.account.domain.usecase.RegisterUserUseCase
+import com.example.havucwallpapernewversion.helper.DeviceHelper
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class SplashVM @Inject constructor(
+    private val registerUserUseCase: RegisterUserUseCase,
+    private val deviceHelper: DeviceHelper,
 ) : BaseViewModel() {
 
+    val openMainScreen = MutableLiveData<Boolean>()
 
+    init {
+        viewModelScope.launch {
+            registerUserUseCase(
+                RegisterUserRequest(
+                    "fIU9lZa4RuWfJM4Bera4HK:APA91bEZ1P9g-TM556jLrFBjqapCKIOp3oaXTmwzKx1ke2Ly7fBnb_Nh9wFYCMqPp-RoxWEeEzuRRkImWRWezAzawoO2GPsptAECCSJoIUSjgB4Xn9h4ClDABIjRyxYkYbK61q0twzfN",
+                    deviceHelper.getDeviceUniqueId()
+                )
+            )
+            openMainScreen.value = true
+        }
+    }
 
 }
