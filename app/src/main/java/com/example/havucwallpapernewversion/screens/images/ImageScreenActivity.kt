@@ -20,24 +20,28 @@ class ImageScreenActivity: BaseActivity<ImageScreenVM, ActivityImageScreenBindin
 
     override fun initialize() {
         super.initialize()
-       // loadFragment(HomeFragment())
-        bottomNav = findViewById(R.id.bottomNav) as BottomNavigationView
-        /*    bottomNav.setOnItemSelectedListener {
+        loadFragment(ImageScreenFragment())
+        bottomNav = findViewById(R.id.bottomNav)
+            bottomNav.setOnItemSelectedListener {
             when (it.itemId) {
                   R.id.home -> {
-                      loadFragment(HomeFragment())
+                      loadFragment(ImageScreenFragment())
                       true
                   }
                   R.id.message -> {
-                      loadFragment(ChatFragment())
+                      loadFragment(ImageScreenFragment())
                       true
                   }
                   R.id.settings -> {
-                      loadFragment(SettingFragment())
+                      loadFragment(ImageScreenFragment())
                       true
                   }
+                else->
+                    false
               }
-          }*/
+
+
+          }
     }
     private  fun loadFragment(fragment: Fragment){
         val transaction = supportFragmentManager.beginTransaction()

@@ -7,13 +7,15 @@ import androidx.appcompat.widget.AppCompatImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.havucwallpapernewversion.R
 import com.example.havucwallpapernewversion.features.images.data.model.ImageResponse
+import com.example.havucwallpapernewversion.features.images.domain.model.Image
+import com.squareup.picasso.Picasso
 
 class ImageScreenAdapter :
     RecyclerView.Adapter<ImageScreenAdapter.CompanyViewHolder>() {
 
-    private var items = ArrayList<ImageResponse>()
+    private var items = ArrayList<Image>()
 
-    fun setListData(items: List<ImageResponse>) {
+    fun setListData(items: List<Image>) {
         this.items = ArrayList(items)
         notifyDataSetChanged()
     }
@@ -21,7 +23,8 @@ class ImageScreenAdapter :
     class CompanyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val photo = view.findViewById<AppCompatImageView>(R.id.iv_photo)
 
-        fun bindItems(item: ImageResponse) {
+        fun bindItems(item: Image) {
+            Picasso.get().load(item.imagePullPath).into(photo)
         }
     }
 
@@ -33,6 +36,8 @@ class ImageScreenAdapter :
 
     override fun onBindViewHolder(holder: CompanyViewHolder, position: Int) {
         holder.bindItems(items.get(position))
+
+
     }
 
     override fun getItemCount(): Int {

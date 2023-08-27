@@ -1,45 +1,37 @@
 package com.example.havucwallpapernewversion.screens.images
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.havucwallpapernewversion.base.BaseViewModel
-import com.example.havucwallpapernewversion.features.images.data.model.ImageResponse
 import com.example.havucwallpapernewversion.features.images.domain.GetImagesUseCase
+import com.example.havucwallpapernewversion.features.images.domain.mapper.toImage
+import com.example.havucwallpapernewversion.features.images.domain.model.Image
 import com.example.havucwallpapernewversion.utility.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import retrofit2.Response
 import javax.inject.Inject
 
 @HiltViewModel
 class ImageScreenVM @Inject constructor(
     private val getImagesUseCase: GetImagesUseCase,
+) : BaseViewModel() {
+    private val _imageList = MutableLiveData<List<Image>>()
+    val imageList: LiveData<List<Image>> get() = _imageList
 
-    ) : BaseViewModel() {
-    private val _imageList = MutableLiveData<Resource<List<ImageResponse>>>()
-    val imageList: LiveData<Resource<List<ImageResponse>>> get() = _imageList
-
-    init {
+    fun getImage(page: Int) {
         viewModelScope.launch {
-            getImage(0)
-        }
-    }
-
-    private suspend fun getImage(page: Int) {
-        try {
-            _imageList.postValue(handleGetImage(getImagesUseCase.invoke(page)))
-        } catch (t: Throwable) {
-
-        }
-    }
-
-   private fun handleGetImage(response: Response<List<ImageResponse>>): Resource<List<ImageResponse>> {
-        if (response.isSuccessful) {
-            response.body().let {
-                return Resource.Success(listOf())
+            try {
+                val response = getImagesUseCase.invoke(page)
+                var imageMap = response.body()!!.map {
+                    it.toImage()
+                }
+                _imageList.postValue(imageMap)
+            } catch (t: Throwable) {
             }
         }
-        return Resource.Fail(response.message())
     }
+
+
 }

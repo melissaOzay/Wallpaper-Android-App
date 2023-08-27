@@ -10,8 +10,8 @@ class ImageRepositoryImpl @Inject constructor(
 ) : ImageRepository {
     override suspend fun getImages(page: Int): Response<List<ImageResponse>> {
         val response = imageRemoteDS.getImages(page)
-        return if (response.body()!!.isNotEmpty()) {
-            Response.success(response.body())
+        return if (response.body()?.data?.isNotEmpty() == true) {
+            Response.success(response.body()!!.data)
         } else {
             Response.error(response.code(),response.errorBody())
         }

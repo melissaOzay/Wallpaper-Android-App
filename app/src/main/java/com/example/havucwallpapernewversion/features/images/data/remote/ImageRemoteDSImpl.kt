@@ -2,6 +2,7 @@ package com.example.havucwallpapernewversion.features.images.data.remote
 
 import retrofit2.Response
 import com.example.havucwallpapernewversion.features.images.data.api.ImageService
+import com.example.havucwallpapernewversion.features.images.data.model.ImageBaseResponse
 import com.example.havucwallpapernewversion.features.images.data.model.ImageResponse
 import com.example.havucwallpapernewversion.features.images.data.repository.ImageRepository
 import retrofit2.Retrofit
@@ -14,7 +15,7 @@ class ImageRemoteDSImpl @Inject constructor(
     private val imageService by lazy {
         retrofit.create(ImageService::class.java)
     }
-    override suspend fun getImages(page: Int): Response<List<ImageResponse>> {
+    override suspend fun getImages(page: Int): Response<ImageBaseResponse> {
         return imageService.getImages(page,"AI_GENERATED")
     }
 }
