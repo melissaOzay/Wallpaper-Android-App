@@ -1,12 +1,10 @@
 package com.example.havucwallpapernewversion.data
 
 import android.content.Context
-import android.util.Log
-import com.example.havucwallpapernewversion.CoreLocalHelper
-import com.example.havucwallpapernewversion.CoreLocalHelperImpl
+import com.example.havucwallpapernewversion.data.local.shared.CoreLocalHelper
+import com.example.havucwallpapernewversion.data.local.shared.CoreLocalHelperImpl
 import com.example.havucwallpapernewversion.data.local.LocalDS
 import com.example.havucwallpapernewversion.data.local.LocalDSImpl
-import com.example.havucwallpapernewversion.features.images.data.api.ImageService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -56,6 +54,7 @@ class NetworkModule {
 
 
     }
+
     @Provides
     @Singleton
     fun provideRetrofitClient(@ApplicationContext context: Context,

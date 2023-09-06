@@ -1,5 +1,6 @@
 package com.example.havucwallpapernewversion.screens.splash
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -17,18 +18,25 @@ class SplashVM @Inject constructor(
     private val deviceHelper: DeviceHelper,
 ) : BaseViewModel() {
 
+    private val _errorMessage = MutableLiveData<String>()
+    val errorMessage: LiveData<String> get() = _errorMessage
     val openMainScreen = MutableLiveData<Boolean>()
 
     init {
         viewModelScope.launch {
-            registerUserUseCase(
+            val response = registerUserUseCase(
                 RegisterUserRequest(
                     "fIU9lZa4RuWfJM4Bera4HK:APA91bEZ1P9g-TM556jLrFBjqapCKIOp3oaXTmwzKx1ke2Ly7fBnb_Nh9wFYCMqPp-RoxWEeEzuRRkImWRWezAzawoO2GPsptAECCSJoIUSjgB4Xn9h4ClDABIjRyxYkYbK61q0twzfN",
                     deviceHelper.getDeviceUniqueId()
                 )
             )
-            openMainScreen.value = true
+
+            if (response.isFailure) {
+                _errorMessage.postValue(response.getOrNull()?.error.toString())
+                openMainScreen.value=false
+            }else{
+                openMainScreen.value=true
+            }
         }
     }
-
 }

@@ -1,5 +1,6 @@
 package com.example.havucwallpapernewversion.features.images.data.api
 
+import com.example.havucwallpapernewversion.features.account.data.model.response.BaseResponse
 import com.example.havucwallpapernewversion.features.images.data.model.ImageBaseResponse
 import retrofit2.Response
 import com.example.havucwallpapernewversion.features.images.data.model.ImageResponse
@@ -10,8 +11,8 @@ interface ImageService {
     @GET("api/images")
     suspend fun getImages(
         @Query("page") page: Int,
-        @Query("imageType") imageType: String,
-    ): Response<ImageBaseResponse>
+        @Query("imageType") imageType: String
+    ): BaseResponse<List<ImageResponse>>
 
     @GET("api/images")
     suspend fun searchImages(

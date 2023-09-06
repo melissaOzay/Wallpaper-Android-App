@@ -10,42 +10,49 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ImageScreenActivity: BaseActivity<ImageScreenVM, ActivityImageScreenBinding>() {
+class ImageScreenActivity : BaseActivity<ImageScreenVM, ActivityImageScreenBinding>() {
 
-    lateinit var bottomNav : BottomNavigationView
     override val viewModel: ImageScreenVM by viewModels()
     override fun getViewBinding(): ActivityImageScreenBinding {
         return ActivityImageScreenBinding.inflate(layoutInflater)
     }
 
+    private val imageScreenFragment by lazy {
+        ImageScreenFragment()
+    }
     override fun initialize() {
         super.initialize()
-        loadFragment(ImageScreenFragment())
-        bottomNav = findViewById(R.id.bottomNav)
-            bottomNav.setOnItemSelectedListener {
-            when (it.itemId) {
-                  R.id.home -> {
-                      loadFragment(ImageScreenFragment())
-                      true
-                  }
-                  R.id.message -> {
-                      loadFragment(ImageScreenFragment())
-                      true
-                  }
-                  R.id.settings -> {
-                      loadFragment(ImageScreenFragment())
-                      true
-                  }
-                else->
-                    false
-              }
-
-
-          }
+        loadFragment(imageScreenFragment)
+        initBottomMenu()
     }
-    private  fun loadFragment(fragment: Fragment){
+
+    private fun initBottomMenu() {
+        binding.bottomNav.setOnItemSelectedListener {
+            when (it.itemId) {
+                R.id.home -> {
+                    loadFragment(imageScreenFragment)
+                    true
+                }
+
+                R.id.message -> {
+                    loadFragment(ImageScreenFragment())
+                    true
+                }
+
+                R.id.settings -> {
+                    loadFragment(ImageScreenFragment())
+                    true
+                }
+
+                else ->
+                    false
+            }
+        }
+    }
+
+    private fun loadFragment(fragment: Fragment) {
         val transaction = supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.container,fragment)
+        transaction.replace(R.id.container, fragment)
         transaction.commit()
     }
 

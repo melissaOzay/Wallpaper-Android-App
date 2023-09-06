@@ -1,10 +1,10 @@
-package com.example.havucwallpapernewversion
+package com.example.havucwallpapernewversion.data.local.shared
 
 import android.content.Context
 import android.content.SharedPreferences
 import javax.inject.Inject
 
-class CoreLocalHelperImpl @Inject constructor(context: Context) : CoreLocalHelper  {
+class CoreLocalHelperImpl @Inject constructor(context: Context) : CoreLocalHelper {
     private val AUTHORIZATON_PREF_HELPER = "authorizationPref"
     lateinit var mPrefs: SharedPreferences
     lateinit var mPref: SharedPreferences

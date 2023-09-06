@@ -4,8 +4,8 @@ import com.example.havucwallpapernewversion.features.images.data.model.ImageResp
 import com.example.havucwallpapernewversion.features.images.domain.model.Image
 
 fun ImageResponse.toImage() = Image(
-    id = imageId,
-    path = imagePath,
-    imagePullPath = imagePullPath
+    id = imageId.toString(),
+    path = imagePath.toString(),
+    imagePullPath = imagePullPath.toString()
 )
 
