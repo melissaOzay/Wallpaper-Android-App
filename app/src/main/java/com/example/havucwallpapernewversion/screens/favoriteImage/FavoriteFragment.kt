@@ -1,4 +1,4 @@
-package com.example.havucwallpapernewversion.screens.images
+package com.example.havucwallpapernewversion.screens.favoriteImage
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,34 +9,27 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.havucwallpapernewversion.base.BaseFragment
-import com.example.havucwallpapernewversion.databinding.FragmentImageScreenBinding
-import com.example.havucwallpapernewversion.features.images.domain.model.Image
+import com.example.havucwallpapernewversion.databinding.FragmentFavoriteBinding
 import com.example.havucwallpapernewversion.screens.images.adapter.FavoriteAdapter
-import com.example.havucwallpapernewversion.screens.images.adapter.ImageScreenAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
-class ImageScreenFragment : BaseFragment<FragmentImageScreenBinding, ImageScreenVM>() {
+class FavoriteFragment : BaseFragment<FragmentFavoriteBinding, FavoriteVM>() {
     private val recyclerViewAdapter by lazy {
-       ImageScreenAdapter(listener =object : ImageScreenAdapter.HomeAdapterListener {
-           override fun addFavorite(entity: Image) {
-               viewModel.addFavorite(entity)
-           }
-
-       })
+        FavoriteAdapter()
     }
     private lateinit var recyclerView: RecyclerView
     override fun getViewBinding(
         inflater: LayoutInflater,
         container: ViewGroup?,
         attachToParent: Boolean
-    ): FragmentImageScreenBinding {
-        return FragmentImageScreenBinding.inflate(layoutInflater)
+    ): FragmentFavoriteBinding {
+        return FragmentFavoriteBinding.inflate(layoutInflater)
     }
 
 
-    override val viewModel: ImageScreenVM by viewModels()
+    override val viewModel: FavoriteVM by viewModels()
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

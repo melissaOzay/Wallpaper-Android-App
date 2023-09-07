@@ -1,4 +1,4 @@
-package com.example.havucwallpapernewversion.screens.images
+package com.example.havucwallpapernewversion.screens.favoriteImage
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -14,7 +14,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class ImageScreenVM @Inject constructor(
+class FavoriteVM @Inject constructor(
     private val getImagesUseCase: GetImagesUseCase,
 ) : BaseViewModel() {
 
@@ -46,9 +46,6 @@ class ImageScreenVM @Inject constructor(
 
 
         }
-    }
-    fun addFavorite(image: Image){
-
     }
 
 
