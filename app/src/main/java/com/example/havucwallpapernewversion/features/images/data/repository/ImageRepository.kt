@@ -6,6 +6,8 @@ import com.example.havucwallpapernewversion.features.images.data.model.ImageResp
 import com.example.havucwallpapernewversion.features.images.domain.model.Image
 import retrofit2.Response
 interface ImageRepository {
-    suspend fun getImages(page: Int):Result<BaseResponse<List<ImageResponse>>>
+    suspend fun getImages(page: Int):Result<List<Image>>
+    fun likeAndUnlikeImage(image: Image)
+
 
 }

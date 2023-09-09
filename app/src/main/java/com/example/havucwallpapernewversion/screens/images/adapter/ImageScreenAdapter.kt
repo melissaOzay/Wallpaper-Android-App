@@ -38,8 +38,10 @@ class ImageScreenAdapter(val listener: HomeAdapterListener?) :
 
     override fun onBindViewHolder(holder: CompanyViewHolder, position: Int) {
         holder.bindItems(items.get(position))
+        holder.favoriteToggle.setOnClickListener {
         if(holder.favoriteToggle.isChecked){
             listener?.addFavorite(items.get(position))
+        }
         }
     }
 

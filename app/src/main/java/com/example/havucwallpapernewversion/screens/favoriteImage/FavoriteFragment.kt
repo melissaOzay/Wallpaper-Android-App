@@ -36,7 +36,7 @@ class FavoriteFragment : BaseFragment<FragmentFavoriteBinding, FavoriteVM>() {
         super.onViewCreated(view, savedInstanceState)
         initRecylerView()
         observeImages()
-        observeErrorMessage()
+       // observeErrorMessage()
         viewModel.getImage()
 
     }

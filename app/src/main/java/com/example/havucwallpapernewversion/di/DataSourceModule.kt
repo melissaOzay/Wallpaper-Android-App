@@ -4,6 +4,8 @@ import com.example.havucwallpapernewversion.features.account.data.local.AccountL
 import com.example.havucwallpapernewversion.features.account.data.local.AccountLocalDSImpl
 import com.example.havucwallpapernewversion.features.account.data.remote.AccountRemoteDS
 import com.example.havucwallpapernewversion.features.account.data.remote.AccountRemoteDSImp
+import com.example.havucwallpapernewversion.features.images.data.local.ImageLocalDS
+import com.example.havucwallpapernewversion.features.images.data.local.ImageLocalDSImpl
 import com.example.havucwallpapernewversion.features.images.data.remote.ImageRemoteDS
 import com.example.havucwallpapernewversion.features.images.data.remote.ImageRemoteDSImpl
 import dagger.Binds
@@ -28,4 +30,9 @@ abstract class DataSourceModule {
     abstract fun provideLocalAccountDS(
         accountLocalDSImpl: AccountLocalDSImpl,
     ): AccountLocalDS
+
+    @Binds
+    abstract fun provideImageLocalDS(
+        imageLocalDSImpl: ImageLocalDSImpl,
+    ): ImageLocalDS
 }

@@ -1,12 +1,10 @@
 package com.example.havucwallpapernewversion.screens.favoriteImage
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.havucwallpapernewversion.base.BaseViewModel
-import com.example.havucwallpapernewversion.features.images.data.model.ImageResponse
-import com.example.havucwallpapernewversion.features.images.domain.GetImagesUseCase
+import com.example.havucwallpapernewversion.features.images.domain.usecases.GetImagesUseCase
 import com.example.havucwallpapernewversion.features.images.domain.mapper.toImage
 import com.example.havucwallpapernewversion.features.images.domain.model.Image
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -31,16 +29,14 @@ class FavoriteVM @Inject constructor(
         viewModelScope.launch {
             val response = getImagesUseCase(currentPage)
             if (response.isSuccess) {
-                val images = response.getOrNull()?.data?.map {
-                    it.toImage()
-                }
+                val images = response.getOrNull()
                 val currentList = imageList.value?.toMutableList() ?: mutableListOf()
                 val imageList = images?.toMutableList() ?: mutableListOf()
                 currentList.addAll(imageList)
                 _imageList.postValue(currentList)
                 currentPage += 1
             } else {
-                _errorMessage.postValue(response.getOrNull()?.error)
+               // _errorMessage.postValue(response.getOrNull()?.error)
 
             }
 

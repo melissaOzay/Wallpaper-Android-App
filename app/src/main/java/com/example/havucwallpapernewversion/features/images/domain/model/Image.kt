@@ -7,5 +7,6 @@ import kotlinx.parcelize.Parcelize
 data class Image(
     val id: String,
     val path: String,
-    val imagePullPath:String
+    val imagePullPath:String,
+    val isLiked:Boolean
 ) : Parcelable
