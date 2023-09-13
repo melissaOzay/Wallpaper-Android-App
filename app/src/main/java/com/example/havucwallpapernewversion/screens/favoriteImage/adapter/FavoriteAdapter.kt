@@ -1,22 +1,28 @@
-package com.example.havucwallpapernewversion.screens.images.adapter
+package com.example.havucwallpapernewversion.screens.favoriteImage.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatImageView
+import androidx.recyclerview.widget.AsyncListDiffer
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.havucwallpapernewversion.R
 import com.example.havucwallpapernewversion.features.images.domain.model.Image
+import com.example.havucwallpapernewversion.screens.images.adapter.ImageDiffCallBack
 import com.squareup.picasso.Picasso
 
 class FavoriteAdapter :
     RecyclerView.Adapter<FavoriteAdapter.CompanyViewHolder>() {
 
-    private var items = ArrayList<Image>()
+    private var oldFavoriList = arrayListOf<Image>()
 
     fun setListData(items: List<Image>) {
-        this.items = ArrayList(items)
-        notifyDataSetChanged()
+        val diffUtil = FavoriteImageDiffCallBack(oldFavoriList,items)
+        val diffResult = DiffUtil.calculateDiff(diffUtil)
+        oldFavoriList= items as ArrayList<Image>
+        diffResult.dispatchUpdatesTo(this)
     }
 
     class CompanyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -34,20 +40,13 @@ class FavoriteAdapter :
     }
 
     override fun onBindViewHolder(holder: CompanyViewHolder, position: Int) {
-        holder.bindItems(items.get(position))
-
+        holder.bindItems(oldFavoriList[position])
 
     }
 
     override fun getItemCount(): Int {
-        return items.count()
+        return oldFavoriList.count()
     }
 
- /*   interface HomeAdapterListener {
-        fun addFavorite(entity: WordyEntity)
-        fun deleteFavorite(entity: WordyEntity)
-        fun shareButton(text: String)
-        fun copyToClipboard(text: CharSequence)
-    }*/
 
 }

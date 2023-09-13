@@ -1,16 +1,18 @@
 package com.example.havucwallpapernewversion.screens.favoriteImage
 
+import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.havucwallpapernewversion.base.BaseFragment
 import com.example.havucwallpapernewversion.databinding.FragmentFavoriteBinding
-import com.example.havucwallpapernewversion.screens.images.adapter.FavoriteAdapter
+import com.example.havucwallpapernewversion.screens.favoriteImage.adapter.FavoriteAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -36,8 +38,12 @@ class FavoriteFragment : BaseFragment<FragmentFavoriteBinding, FavoriteVM>() {
         super.onViewCreated(view, savedInstanceState)
         initRecylerView()
         observeImages()
-       // observeErrorMessage()
-        viewModel.getImage()
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.getFavoriteImage()
 
     }
 
@@ -46,26 +52,11 @@ class FavoriteFragment : BaseFragment<FragmentFavoriteBinding, FavoriteVM>() {
         recyclerView.adapter = recyclerViewAdapter
         recyclerView.layoutManager =
             GridLayoutManager(requireContext(), 3)
-
-        recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
-                super.onScrollStateChanged(recyclerView, newState)
-                if (!recyclerView.canScrollVertically(1) && newState == RecyclerView.SCROLL_STATE_IDLE) {
-                    viewModel.getImage()
-                }
-            }
-        })
     }
 
     private fun observeImages() {
         viewModel.imageList.observe(viewLifecycleOwner) { resource ->
             recyclerViewAdapter.setListData(ArrayList(resource))
-        }
-    }
-
-    private fun observeErrorMessage() {
-        viewModel.errorMessage.observe(viewLifecycleOwner) { resource ->
-            Toast.makeText(requireContext(), resource, Toast.LENGTH_SHORT).show()
         }
     }
 

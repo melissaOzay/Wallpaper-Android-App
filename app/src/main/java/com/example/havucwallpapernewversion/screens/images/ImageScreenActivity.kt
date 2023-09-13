@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import com.example.havucwallpapernewversion.R
 import com.example.havucwallpapernewversion.base.BaseActivity
 import com.example.havucwallpapernewversion.databinding.ActivityImageScreenBinding
+import com.example.havucwallpapernewversion.screens.favoriteImage.FavoriteFragment
 import com.example.havucwallpapernewversion.screens.splash.SplashVM
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
@@ -20,6 +21,9 @@ class ImageScreenActivity : BaseActivity<ImageScreenVM, ActivityImageScreenBindi
     private val imageScreenFragment by lazy {
         ImageScreenFragment()
     }
+    private val favoriteFragment by lazy {
+        FavoriteFragment()
+    }
     override fun initialize() {
         super.initialize()
         loadFragment(imageScreenFragment)
@@ -34,8 +38,8 @@ class ImageScreenActivity : BaseActivity<ImageScreenVM, ActivityImageScreenBindi
                     true
                 }
 
-                R.id.message -> {
-                    loadFragment(ImageScreenFragment())
+                R.id.favorite -> {
+                    loadFragment(favoriteFragment)
                     true
                 }
 
@@ -55,5 +59,7 @@ class ImageScreenActivity : BaseActivity<ImageScreenVM, ActivityImageScreenBindi
         transaction.replace(R.id.container, fragment)
         transaction.commit()
     }
+
+
 
 }

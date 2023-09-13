@@ -23,7 +23,7 @@ object WallpaperDBModule {
         app,
         WallpaperAppDB::class.java,
         "wallpaper_db"
-    ).allowMainThreadQueries()
+    ).fallbackToDestructiveMigration().allowMainThreadQueries()
         .build()
 
     @Reusable

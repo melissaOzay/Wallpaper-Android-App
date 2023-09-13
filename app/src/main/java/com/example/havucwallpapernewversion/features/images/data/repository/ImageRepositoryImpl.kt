@@ -2,15 +2,12 @@ package com.example.havucwallpapernewversion.features.images.data.repository
 
 import android.util.Log
 import com.example.havucwallpapernewversion.data.local.db.image.entity.ImageEntity
-import com.example.havucwallpapernewversion.features.account.data.model.response.BaseResponse
 import com.example.havucwallpapernewversion.features.images.data.local.ImageLocalDS
-import com.example.havucwallpapernewversion.features.images.data.model.ImageResponse
 import com.example.havucwallpapernewversion.features.images.data.remote.ImageRemoteDS
 import com.example.havucwallpapernewversion.features.images.domain.mapper.toImage
 import com.example.havucwallpapernewversion.features.images.domain.model.Image
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.callbackFlow
 import javax.inject.Inject
 
 class ImageRepositoryImpl @Inject constructor(
@@ -30,6 +27,7 @@ class ImageRepositoryImpl @Inject constructor(
             Result.failure(Exception(ex))
         }
     }
+
     override fun likeAndUnlikeImage(image: Image) {
         return try {
             val isImageFavorite = imageLocalDS.isImageFavori(image.id)
@@ -43,8 +41,14 @@ class ImageRepositoryImpl @Inject constructor(
             } else {
                 imageLocalDS.removeImage(image.id)
             }
-        }catch (ex: java.lang.Exception) {
+        } catch (ex: java.lang.Exception) {
             System.out.println("Error desc: " + ex.message)
         }
     }
+
+    override suspend fun getFavoriteImages(): List<Image> {
+       return imageLocalDS.getImagesSingle().map {
+            it. toImage()}
+    }
 }
+

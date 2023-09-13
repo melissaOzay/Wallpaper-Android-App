@@ -5,20 +5,23 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ToggleButton
 import androidx.appcompat.widget.AppCompatImageView
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.havucwallpapernewversion.R
-import com.example.havucwallpapernewversion.features.images.data.model.ImageResponse
 import com.example.havucwallpapernewversion.features.images.domain.model.Image
 import com.squareup.picasso.Picasso
 
 class ImageScreenAdapter(val listener: HomeAdapterListener?) :
     RecyclerView.Adapter<ImageScreenAdapter.CompanyViewHolder>() {
 
-    private var items = ArrayList<Image>()
+    private var images = arrayListOf<Image>()
 
     fun setListData(items: List<Image>) {
-        this.items = ArrayList(items)
-        notifyDataSetChanged()
+        val diffUtil = ImageDiffCallBack(images,items)
+        val diffResult = DiffUtil.calculateDiff(diffUtil)
+        images.addAll(items)
+        diffResult.dispatchUpdatesTo(this)
+
     }
 
     class CompanyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -27,6 +30,7 @@ class ImageScreenAdapter(val listener: HomeAdapterListener?) :
 
         fun bindItems(item: Image) {
             Picasso.get().load(item.imagePullPath).into(photo)
+            favoriteToggle.isChecked = item.isLiked
         }
     }
 
@@ -37,16 +41,16 @@ class ImageScreenAdapter(val listener: HomeAdapterListener?) :
     }
 
     override fun onBindViewHolder(holder: CompanyViewHolder, position: Int) {
-        holder.bindItems(items.get(position))
+        holder.bindItems(images[position])
         holder.favoriteToggle.setOnClickListener {
-        if(holder.favoriteToggle.isChecked){
-            listener?.addFavorite(items.get(position))
-        }
+            if (holder.favoriteToggle.isChecked) {
+                listener?.addFavorite(images[position])
+            }
         }
     }
 
     override fun getItemCount(): Int {
-        return items.count()
+        return images.count()
     }
 
     interface HomeAdapterListener {

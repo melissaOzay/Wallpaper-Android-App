@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.havucwallpapernewversion.base.BaseFragment
 import com.example.havucwallpapernewversion.databinding.FragmentImageScreenBinding
 import com.example.havucwallpapernewversion.features.images.domain.model.Image
-import com.example.havucwallpapernewversion.screens.images.adapter.FavoriteAdapter
 import com.example.havucwallpapernewversion.screens.images.adapter.ImageScreenAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -19,13 +18,13 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class ImageScreenFragment : BaseFragment<FragmentImageScreenBinding, ImageScreenVM>() {
     private val recyclerViewAdapter by lazy {
-       ImageScreenAdapter(listener =object : ImageScreenAdapter.HomeAdapterListener {
-           override fun addFavorite(entity: Image) {
-               viewModel.addFavorite(entity)
-           }
-
-       })
+        ImageScreenAdapter(listener = object : ImageScreenAdapter.HomeAdapterListener {
+            override fun addFavorite(entity: Image) {
+                viewModel.addFavorite(entity)
+            }
+        })
     }
+
     private lateinit var recyclerView: RecyclerView
     override fun getViewBinding(
         inflater: LayoutInflater,
@@ -41,11 +40,9 @@ class ImageScreenFragment : BaseFragment<FragmentImageScreenBinding, ImageScreen
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initRecylerView()
-        observeImages()
-        //observeErrorMessage()
         viewModel.getImage()
-
+        observeImages()
+        initRecylerView()
     }
 
     private fun initRecylerView() {

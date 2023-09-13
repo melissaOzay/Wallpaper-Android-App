@@ -39,20 +39,16 @@ class ImageScreenVM @Inject constructor(
                 _imageList.postValue(currentList)
                 currentPage += 1
             } else {
-               // _errorMessage.postValue(response.getOrNull()?.error)
+                // _errorMessage.postValue(response.getOrNull()?.error)
 
             }
 
 
         }
     }
-    fun addFavorite(image: Image){
-        viewModelScope.launch {
-            imageLikeAndUnLikeImageUseCase(image)
-        }
 
-
-
+    fun addFavorite(image: Image) {
+        imageLikeAndUnLikeImageUseCase(image)
     }
 
 

@@ -12,7 +12,7 @@ class ImageLocalDSImpl @Inject constructor(
     private val imageDAO: ImageDAO,
 ) : ImageLocalDS {
     private lateinit var image: Image
-    override fun getImagesObservable(): Flow<List<ImageEntity>> = imageDAO.getImages()
+    override fun getImagesObservable():List<ImageEntity> = imageDAO.getImages()
 
     override fun removeImage(imageId: String) = imageDAO.deleteImage(imageId)
 

@@ -5,7 +5,7 @@ import com.example.havucwallpapernewversion.features.images.domain.model.Image
 import kotlinx.coroutines.flow.Flow
 
 interface ImageLocalDS {
-    fun getImagesObservable(): Flow<List<ImageEntity>>
+    fun getImagesObservable():List<ImageEntity>
     fun removeImage(imageId: String)
     suspend fun getImagesSingle(): List<ImageEntity>
     fun addImage(imageEntity: ImageEntity)
