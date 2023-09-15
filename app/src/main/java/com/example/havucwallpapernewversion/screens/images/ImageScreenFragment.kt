@@ -1,6 +1,7 @@
 package com.example.havucwallpapernewversion.screens.images
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,16 +12,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.havucwallpapernewversion.base.BaseFragment
 import com.example.havucwallpapernewversion.databinding.FragmentImageScreenBinding
 import com.example.havucwallpapernewversion.features.images.domain.model.Image
-import com.example.havucwallpapernewversion.screens.images.adapter.ImageScreenAdapter
+import com.example.havucwallpapernewversion.screens.images.adapter.ImagesAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
 class ImageScreenFragment : BaseFragment<FragmentImageScreenBinding, ImageScreenVM>() {
     private val recyclerViewAdapter by lazy {
-        ImageScreenAdapter(listener = object : ImageScreenAdapter.HomeAdapterListener {
-            override fun addFavorite(entity: Image) {
-                viewModel.addFavorite(entity)
+        ImagesAdapter(listener = object : ImagesAdapter.ImagesAdapterListener {
+            override fun addFavorite(image: Image) {
+                viewModel.addFavorite(image)
             }
         })
     }
@@ -45,6 +46,12 @@ class ImageScreenFragment : BaseFragment<FragmentImageScreenBinding, ImageScreen
         initRecylerView()
     }
 
+    override fun onResume() {
+        super.onResume()
+        viewModel.getImage()
+
+    }
+
     private fun initRecylerView() {
         recyclerView = binding.recyclerView
         recyclerView.adapter = recyclerViewAdapter
@@ -64,6 +71,11 @@ class ImageScreenFragment : BaseFragment<FragmentImageScreenBinding, ImageScreen
     private fun observeImages() {
         viewModel.imageList.observe(viewLifecycleOwner) { resource ->
             recyclerViewAdapter.setListData(ArrayList(resource))
+            resource.map {
+                if(it.isLiked)
+                    Log.e("slm",it.id.toString())
+            }
+
         }
     }
 

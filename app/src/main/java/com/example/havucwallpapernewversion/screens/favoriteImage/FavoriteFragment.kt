@@ -1,7 +1,5 @@
 package com.example.havucwallpapernewversion.screens.favoriteImage
 
-import android.annotation.SuppressLint
-import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,23 +7,26 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.havucwallpapernewversion.base.BaseFragment
 import com.example.havucwallpapernewversion.databinding.FragmentFavoriteBinding
-import com.example.havucwallpapernewversion.screens.favoriteImage.adapter.FavoriteAdapter
+import com.example.havucwallpapernewversion.features.images.domain.model.Image
+import com.example.havucwallpapernewversion.screens.images.adapter.ImagesAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
 class FavoriteFragment : BaseFragment<FragmentFavoriteBinding, FavoriteVM>() {
-    private val recyclerViewAdapter by lazy {
-        FavoriteAdapter()
+    private val imageAdapter by lazy {
+        ImagesAdapter(object : ImagesAdapter.ImagesAdapterListener {
+            override fun addFavorite(image: Image) {
+                TODO("Not yet implemented")
+            }
+
+        })
     }
-    private lateinit var recyclerView: RecyclerView
+
     override fun getViewBinding(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        attachToParent: Boolean
+        inflater: LayoutInflater, container: ViewGroup?, attachToParent: Boolean
     ): FragmentFavoriteBinding {
         return FragmentFavoriteBinding.inflate(layoutInflater)
     }
@@ -38,25 +39,25 @@ class FavoriteFragment : BaseFragment<FragmentFavoriteBinding, FavoriteVM>() {
         super.onViewCreated(view, savedInstanceState)
         initRecylerView()
         observeImages()
-
     }
 
     override fun onResume() {
         super.onResume()
         viewModel.getFavoriteImage()
-
+        Log.e("Melisa", "on resume çalıştı")
     }
 
     private fun initRecylerView() {
-        recyclerView = binding.recyclerView
-        recyclerView.adapter = recyclerViewAdapter
-        recyclerView.layoutManager =
-            GridLayoutManager(requireContext(), 3)
+        with(binding.recyclerView) {
+            adapter = imageAdapter
+            layoutManager = GridLayoutManager(requireContext(), 3)
+        }
+
     }
 
     private fun observeImages() {
         viewModel.imageList.observe(viewLifecycleOwner) { resource ->
-            recyclerViewAdapter.setListData(ArrayList(resource))
+            imageAdapter.setListData(ArrayList(resource))
         }
     }
 
