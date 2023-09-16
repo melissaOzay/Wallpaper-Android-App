@@ -19,4 +19,7 @@ class ImageRemoteDSImpl @Inject constructor(
     override suspend fun getImages(page: Int):BaseResponse<List<ImageResponse>>{
         return imageService.getImages(page,"AI_GENERATED")
     }
+    override suspend fun getSearchImages(page: Int,query:String):BaseResponse<List<ImageResponse>>{
+        return imageService.searchImages(page,query,"AI_GENERATED")
+    }
 }

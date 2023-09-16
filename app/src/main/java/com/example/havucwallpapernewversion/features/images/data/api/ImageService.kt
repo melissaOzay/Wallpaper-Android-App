@@ -19,6 +19,6 @@ interface ImageService {
         @Query("page") page: Int,
         @Query("search-query") query: String,
         @Query("imageType") imageType: String,
-    ): Response<List<ImageResponse>>
+    ): BaseResponse<List<ImageResponse>>
 
 }

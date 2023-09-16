@@ -7,4 +7,5 @@ import com.example.havucwallpapernewversion.features.images.data.model.ImageResp
 
 interface ImageRemoteDS {
     suspend fun getImages(page: Int): BaseResponse<List<ImageResponse>>
+    suspend fun getSearchImages(page: Int,query:String): BaseResponse<List<ImageResponse>>
 }

@@ -27,7 +27,19 @@ class ImageRepositoryImpl @Inject constructor(
             Result.failure(Exception(ex))
         }
     }
-
+    override suspend fun getSearchImages(page: Int, query: String): Result<List<Image>>{
+        return try {
+            val response =imageRemoteDS.getSearchImages(page,query)
+            val images =response.data.map {
+                val isFavori = imageLocalDS.isImageFavori(it.imageId.toString())
+                it.toImage(isFavori)
+            }
+            Result.success(images)
+        }catch (ex: java.lang.Exception) {
+            System.out.println("Error desc: " + ex.message)
+            Result.failure(Exception(ex))
+        }
+    }
     override fun likeAndUnlikeImage(image: Image) {
         return try {
             val isImageFavorite = imageLocalDS.isImageFavori(image.id)
@@ -50,5 +62,7 @@ class ImageRepositoryImpl @Inject constructor(
        return imageLocalDS.getImagesSingle().map {
             it. toImage()}
     }
+
+
 }
 
