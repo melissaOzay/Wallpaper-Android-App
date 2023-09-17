@@ -6,8 +6,6 @@ import com.example.havucwallpapernewversion.features.images.data.local.ImageLoca
 import com.example.havucwallpapernewversion.features.images.data.remote.ImageRemoteDS
 import com.example.havucwallpapernewversion.features.images.domain.mapper.toImage
 import com.example.havucwallpapernewversion.features.images.domain.model.Image
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.callbackFlow
 import javax.inject.Inject
 
 class ImageRepositoryImpl @Inject constructor(
@@ -22,24 +20,26 @@ class ImageRepositoryImpl @Inject constructor(
                 it.toImage(isFavori)
             }
             Result.success(images)
-        } catch (ex: java.lang.Exception) {
-            System.out.println("Error desc: " + ex.message)
+        } catch (ex: Exception) {
+            Log.e("Error desc:",ex.message.toString())
             Result.failure(Exception(ex))
         }
     }
-    override suspend fun getSearchImages(page: Int, query: String): Result<List<Image>>{
+
+    override suspend fun getSearchImages(page: Int, query: String): Result<List<Image>> {
         return try {
-            val response =imageRemoteDS.getSearchImages(page,query)
-            val images =response.data.map {
+            val response = imageRemoteDS.getSearchImages(page, query)
+            val images = response.data.map {
                 val isFavori = imageLocalDS.isImageFavori(it.imageId.toString())
                 it.toImage(isFavori)
             }
             Result.success(images)
-        }catch (ex: java.lang.Exception) {
-            System.out.println("Error desc: " + ex.message)
+        } catch (ex: Exception) {
+            Log.e("Error desc:",ex.message.toString())
             Result.failure(Exception(ex))
         }
     }
+
     override fun likeAndUnlikeImage(image: Image) {
         return try {
             val isImageFavorite = imageLocalDS.isImageFavori(image.id)
@@ -53,14 +53,15 @@ class ImageRepositoryImpl @Inject constructor(
             } else {
                 imageLocalDS.removeImage(image.id)
             }
-        } catch (ex: java.lang.Exception) {
-            System.out.println("Error desc: " + ex.message)
+        } catch (ex: Exception) {
+
         }
     }
 
     override suspend fun getFavoriteImages(): List<Image> {
-       return imageLocalDS.getImagesSingle().map {
-            it. toImage()}
+        return imageLocalDS.getImagesSingle().map {
+            it.toImage()
+        }
     }
 
 

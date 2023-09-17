@@ -4,9 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.havucwallpapernewversion.base.BaseViewModel
-import com.example.havucwallpapernewversion.features.images.data.repository.ImageRepositoryImpl
 import com.example.havucwallpapernewversion.features.images.domain.usecases.GetImagesUseCase
-import com.example.havucwallpapernewversion.features.images.domain.mapper.toImage
 import com.example.havucwallpapernewversion.features.images.domain.model.Image
 import com.example.havucwallpapernewversion.features.images.domain.usecases.LikeAndUnLikeImageUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel

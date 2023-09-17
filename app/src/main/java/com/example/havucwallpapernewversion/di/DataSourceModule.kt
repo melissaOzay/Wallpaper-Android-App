@@ -4,6 +4,10 @@ import com.example.havucwallpapernewversion.features.account.data.local.AccountL
 import com.example.havucwallpapernewversion.features.account.data.local.AccountLocalDSImpl
 import com.example.havucwallpapernewversion.features.account.data.remote.AccountRemoteDS
 import com.example.havucwallpapernewversion.features.account.data.remote.AccountRemoteDSImp
+import com.example.havucwallpapernewversion.features.categories.data.local.CategoryLocalDs
+import com.example.havucwallpapernewversion.features.categories.data.local.CategoryLocalDsImpl
+import com.example.havucwallpapernewversion.features.categories.data.remote.CategoryRemoteDS
+import com.example.havucwallpapernewversion.features.categories.data.remote.CategoryRemoteDSImpl
 import com.example.havucwallpapernewversion.features.images.data.local.ImageLocalDS
 import com.example.havucwallpapernewversion.features.images.data.local.ImageLocalDSImpl
 import com.example.havucwallpapernewversion.features.images.data.remote.ImageRemoteDS
@@ -35,4 +39,14 @@ abstract class DataSourceModule {
     abstract fun provideImageLocalDS(
         imageLocalDSImpl: ImageLocalDSImpl,
     ): ImageLocalDS
+
+    @Binds
+    abstract fun provideCategoryRemoteDS(
+        categoryRemoteDSImpl: CategoryRemoteDSImpl,
+    ): CategoryRemoteDS
+
+    @Binds
+    abstract fun provideCategoryLocalDS(
+        categoryLocalDSImpl: CategoryLocalDsImpl,
+    ): CategoryLocalDs
 }

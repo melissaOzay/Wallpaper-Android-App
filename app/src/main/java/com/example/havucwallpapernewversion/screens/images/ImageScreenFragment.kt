@@ -41,7 +41,6 @@ class ImageScreenFragment : BaseFragment<FragmentImageScreenBinding, ImageScreen
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.getImage()
         observeImages()
         initRecylerView()
     }
@@ -72,8 +71,8 @@ class ImageScreenFragment : BaseFragment<FragmentImageScreenBinding, ImageScreen
         viewModel.imageList.observe(viewLifecycleOwner) { resource ->
             recyclerViewAdapter.setListData(ArrayList(resource))
             resource.map {
-                if(it.isLiked)
-                    Log.e("slm",it.id.toString())
+                if (it.isLiked)
+                    Log.e("slm", it.id.toString())
             }
 
         }

@@ -7,6 +7,8 @@ import androidx.lifecycle.viewModelScope
 import com.example.havucwallpapernewversion.base.BaseViewModel
 import com.example.havucwallpapernewversion.features.account.data.model.request.RegisterUserRequest
 import com.example.havucwallpapernewversion.features.account.domain.usecase.RegisterUserUseCase
+import com.example.havucwallpapernewversion.features.categories.domain.model.Category
+import com.example.havucwallpapernewversion.features.categories.domain.usecase.GetImagesCategoryUseCase
 import com.example.havucwallpapernewversion.helper.DeviceHelper
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -16,10 +18,13 @@ import javax.inject.Inject
 class SplashVM @Inject constructor(
     private val registerUserUseCase: RegisterUserUseCase,
     private val deviceHelper: DeviceHelper,
-) : BaseViewModel() {
+    private val getCategoryUseCase: GetImagesCategoryUseCase,
+
+    ) : BaseViewModel() {
 
     private val _errorMessage = MutableLiveData<String>()
     val errorMessage: LiveData<String> get() = _errorMessage
+
     val openMainScreen = MutableLiveData<Boolean>()
 
     init {
@@ -37,6 +42,7 @@ class SplashVM @Inject constructor(
             }else{
                 openMainScreen.value=true
             }
+            getCategoryUseCase.invoke()
         }
     }
 }

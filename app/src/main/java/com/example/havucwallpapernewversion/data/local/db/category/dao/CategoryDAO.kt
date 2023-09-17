@@ -9,11 +9,9 @@ import com.example.havucwallpapernewversion.data.local.db.category.entity.Catego
 @Dao
 interface CategoryDAO {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(categoryEntity: CategoryEntity): Long
+    fun insert(categoryEntity: CategoryEntity)
 
     @Query("SELECT * FROM categories")
     suspend fun getCategories(): List<CategoryEntity>
 
-    @Query("DELETE FROM categories WHERE creationTime < :deletionTime")
-    fun deleteOldData(deletionTime: Long)
 }

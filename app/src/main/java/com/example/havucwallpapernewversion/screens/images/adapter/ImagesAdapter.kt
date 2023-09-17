@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.havucwallpapernewversion.R
 import com.example.havucwallpapernewversion.features.images.domain.model.Image
+import com.example.havucwallpapernewversion.screens.categories.adapter.CategoryDiffCallBack
 import com.squareup.picasso.Picasso
 
 class ImagesAdapter(val listener: ImagesAdapterListener) :
@@ -17,7 +18,7 @@ class ImagesAdapter(val listener: ImagesAdapterListener) :
     private var images = arrayListOf<Image>()
 
     fun setListData(items: List<Image>) {
-        val diffUtil = ImageDiffCallBack(images, items)
+        val diffUtil = CategoryDiffCallBack(images, items)
         val diffResult = DiffUtil.calculateDiff(diffUtil)
         images = items as ArrayList<Image>
         diffResult.dispatchUpdatesTo(this)

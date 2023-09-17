@@ -20,14 +20,14 @@ object WallpaperDBModule {
     fun provideWallpaperDatabase(
         @ApplicationContext app: Context,
     ) = Room.databaseBuilder(
-        app,
-        WallpaperAppDB::class.java,
-        "wallpaper_db"
-    ).fallbackToDestructiveMigration().allowMainThreadQueries()
-        .build()
+        app, WallpaperAppDB::class.java, "wallpaper_db"
+    ).fallbackToDestructiveMigration().allowMainThreadQueries().build()
 
     @Reusable
     @Provides
     fun provideImageDAO(db: WallpaperAppDB) = db.getImageDAO()
 
+    @Reusable
+    @Provides
+    fun provideCategoryDAO(db: WallpaperAppDB) = db.getCategoryDAO()
 }
