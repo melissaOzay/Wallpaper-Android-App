@@ -3,12 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:context=".screens.images.ImageScreenActivity"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <FrameLayout
-        android:id="@+id/container"
+    <fragment
+        android:id="@+id/fragmentContainerView3"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        app:defaultNavHost="true"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="60dp"
+        app:navGraph="@navigation/nav_host"
         android:layout_above="@+id/bottomNav"
         />
 
@@ -32,7 +36,7 @@
         app:labelVisibilityMode="unlabeled"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/container"
+        app:layout_constraintTop_toBottomOf="@+id/fragmentContainerView3"
         app:itemIconTint="@drawable/bottom_selector"
         app:menu="@menu/menu_wallpaper" />
 </androidx.constraintlayout.widget.ConstraintLayout>

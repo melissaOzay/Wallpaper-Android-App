@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView  xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="100dp"
-    android:layout_height="100dp"
+    android:layout_width="120dp"
+    android:layout_height="160dp"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_margin="5dp"
     android:layout_marginRight="8dp"
     android:layout_marginBottom="8dp"
@@ -10,9 +11,10 @@
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/iv_photo"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:backgroundTint="@color/onBackgroundColor" />
+        android:layout_width="120dp"
+        android:layout_height="160dp"
+        android:scaleType="fitXY"
+        tools:src="@drawable/ic_favorite_menu"/>
     <ToggleButton
         android:id="@+id/toggleButton"
         android:layout_width="27dp"

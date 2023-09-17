@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.havucwallpapernewversion.base.BaseFragment
@@ -21,9 +22,11 @@ import dagger.hilt.android.AndroidEntryPoint
 class CategoryFragment : BaseFragment<FragmentCategoryBinding, CategoryVM>() {
     private val categoryAdapter by lazy {
         CategoryListAdapter(object : CategoryListAdapter.CategoryAdapterListener {
-            override fun addFavorite(image: Category) {
-                TODO("Not yet implemented")
+            override fun clickCategory(categoryTitle: String) {
+                val action =CategoryFragmentDirections.actionCategoryFragmentToImageScreenFragment(categoryTitle)
+                view?.let { Navigation.findNavController(it).navigate(action) }
             }
+
 
         })
     }

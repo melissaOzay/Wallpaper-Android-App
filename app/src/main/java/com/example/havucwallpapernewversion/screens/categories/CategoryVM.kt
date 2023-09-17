@@ -20,6 +20,8 @@ class CategoryVM  @Inject constructor(
     private val _categoryList = MutableLiveData<List<Category>>()
     val categoryList: LiveData<List<Category>> get() = _categoryList
 
+
+
     init {
         getCategory()
     }
@@ -30,4 +32,5 @@ class CategoryVM  @Inject constructor(
             _categoryList.postValue(categoryList.getOrNull())
         }
     }
+
 }

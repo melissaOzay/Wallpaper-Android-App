@@ -29,8 +29,12 @@ class CategoryListAdapter(val listener: CategoryAdapterListener) :
 
         fun bindItems(item: Category, listener: CategoryAdapterListener) {
             Picasso.get().load(item.image).into(photo)
+            photo.setColorFilter(Color.argb(100, 255, 255, 255))
             title.text=item.categoryTitle
             count.text="-${item.count} Wallpaper-"
+            photo.setOnClickListener {
+                listener.clickCategory(item.categoryTitle)
+            }
         }
     }
 
@@ -50,7 +54,7 @@ class CategoryListAdapter(val listener: CategoryAdapterListener) :
     }
 
     interface CategoryAdapterListener {
-        fun addFavorite(image: Category)
+        fun clickCategory(categoryTitle: String)
     }
 
 }

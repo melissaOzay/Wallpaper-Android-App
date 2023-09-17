@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.havucwallpapernewversion.base.BaseFragment
@@ -18,6 +19,8 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class ImageScreenFragment : BaseFragment<FragmentImageScreenBinding, ImageScreenVM>() {
+
+
     private val recyclerViewAdapter by lazy {
         ImagesAdapter(listener = object : ImagesAdapter.ImagesAdapterListener {
             override fun addFavorite(image: Image) {
@@ -43,11 +46,24 @@ class ImageScreenFragment : BaseFragment<FragmentImageScreenBinding, ImageScreen
         super.onViewCreated(view, savedInstanceState)
         observeImages()
         initRecylerView()
+        val args = arguments?.let {
+            ImageScreenFragmentArgs.fromBundle(
+                it
+            )
+        }
+        val categoryTitle= args?.title
+        if (categoryTitle != null) {
+            if(categoryTitle.isNotEmpty())
+                viewModel.getDetailCategory(categoryTitle)
+        }
+
     }
 
     override fun onResume() {
         super.onResume()
         viewModel.getImage()
+
+
 
     }
 
@@ -62,6 +78,16 @@ class ImageScreenFragment : BaseFragment<FragmentImageScreenBinding, ImageScreen
                 super.onScrollStateChanged(recyclerView, newState)
                 if (!recyclerView.canScrollVertically(1) && newState == RecyclerView.SCROLL_STATE_IDLE) {
                     viewModel.getImage()
+                    val args = arguments?.let {
+                        ImageScreenFragmentArgs.fromBundle(
+                            it
+                        )
+                    }
+                    val categoryTitle= args?.title
+                    if (categoryTitle != null) {
+                        if(categoryTitle.isNotEmpty())
+                            viewModel.getDetailCategory(categoryTitle)
+                    }
                 }
             }
         })
