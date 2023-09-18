@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     tools:context=".screens.images.ImageScreenActivity"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <fragment
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView3"
         android:name="androidx.navigation.fragment.NavHostFragment"
         app:defaultNavHost="true"
@@ -13,14 +13,13 @@
         android:layout_height="match_parent"
         android:layout_marginBottom="60dp"
         app:navGraph="@navigation/nav_host"
-        android:layout_above="@+id/bottomNav"
-        />
+        android:layout_above="@+id/bottomNav" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:backgroundTint="@color/onBackgroundColor"
-        app:layout_constraintBottom_toBottomOf="@+id/container"
+        app:layout_constraintBottom_toBottomOf="@+id/fragmentContainerView3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints">

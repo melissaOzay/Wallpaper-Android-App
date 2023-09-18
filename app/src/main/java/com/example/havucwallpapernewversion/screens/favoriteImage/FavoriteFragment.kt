@@ -19,7 +19,7 @@ class FavoriteFragment : BaseFragment<FragmentFavoriteBinding, FavoriteVM>() {
     private val imageAdapter by lazy {
         ImagesAdapter(object : ImagesAdapter.ImagesAdapterListener {
             override fun addFavorite(image: Image) {
-                TODO("Not yet implemented")
+                viewModel.addFavorite(image)
             }
 
         })

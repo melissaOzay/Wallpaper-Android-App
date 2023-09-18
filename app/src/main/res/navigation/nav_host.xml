@@ -7,25 +7,36 @@
 
     <fragment
         android:id="@+id/categoryFragment"
-        tools:layout="@layout/fragment_category"
         android:name="com.example.havucwallpapernewversion.screens.categories.CategoryFragment"
-        android:label="CategoryFragment" >
+        android:label="CategoryFragment"
+        tools:layout="@layout/fragment_category">
+
         <action
-            android:id="@+id/action_categoryFragment_to_imageScreenFragment"
-            app:destination="@id/imageScreenFragment" />
+            android:id="@+id/action_categoryFragment_to_categoryDetailFragment"
+            app:destination="@id/categoryDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/imageScreenFragment"
-        tools:layout="@layout/fragment_image_screen"
         android:name="com.example.havucwallpapernewversion.screens.images.ImageScreenFragment"
-        android:label="ImageScreenFragment" >
-        <argument
-            android:name="title"
-            app:argType="string" />
+        android:label="ImageScreenFragment"
+        tools:layout="@layout/fragment_image_screen">
+
     </fragment>
     <fragment
         android:id="@+id/favoriteFragment"
-        tools:layout="@layout/fragment_favorite"
         android:name="com.example.havucwallpapernewversion.screens.favoriteImage.FavoriteFragment"
-        android:label="FavoriteFragment" />
+        android:label="FavoriteFragment"
+        tools:layout="@layout/fragment_favorite" />
+    <fragment
+        android:id="@+id/categoryDetailFragment"
+        android:name="com.example.havucwallpapernewversion.screens.categoryDetail.CategoryDetailFragment"
+        android:label="CategoryDetailFragment"
+        tools:layout="@layout/fragment_category_detail">
+        <argument
+            android:name="title"
+            android:defaultValue="null"
+            app:argType="string"
+            app:nullable="false" />
+    </fragment>
+
 </navigation>

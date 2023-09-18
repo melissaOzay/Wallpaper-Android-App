@@ -1,13 +1,11 @@
 package com.example.havucwallpapernewversion.screens.images
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.havucwallpapernewversion.base.BaseFragment
@@ -20,7 +18,6 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class ImageScreenFragment : BaseFragment<FragmentImageScreenBinding, ImageScreenVM>() {
 
-
     private val recyclerViewAdapter by lazy {
         ImagesAdapter(listener = object : ImagesAdapter.ImagesAdapterListener {
             override fun addFavorite(image: Image) {
@@ -31,9 +28,7 @@ class ImageScreenFragment : BaseFragment<FragmentImageScreenBinding, ImageScreen
 
     private lateinit var recyclerView: RecyclerView
     override fun getViewBinding(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        attachToParent: Boolean
+        inflater: LayoutInflater, container: ViewGroup?, attachToParent: Boolean
     ): FragmentImageScreenBinding {
         return FragmentImageScreenBinding.inflate(layoutInflater)
     }
@@ -46,16 +41,6 @@ class ImageScreenFragment : BaseFragment<FragmentImageScreenBinding, ImageScreen
         super.onViewCreated(view, savedInstanceState)
         observeImages()
         initRecylerView()
-        val args = arguments?.let {
-            ImageScreenFragmentArgs.fromBundle(
-                it
-            )
-        }
-        val categoryTitle= args?.title
-        if (categoryTitle != null) {
-            if(categoryTitle.isNotEmpty())
-                viewModel.getDetailCategory(categoryTitle)
-        }
 
     }
 
@@ -64,30 +49,20 @@ class ImageScreenFragment : BaseFragment<FragmentImageScreenBinding, ImageScreen
         viewModel.getImage()
 
 
-
     }
 
     private fun initRecylerView() {
         recyclerView = binding.recyclerView
         recyclerView.adapter = recyclerViewAdapter
-        recyclerView.layoutManager =
-            GridLayoutManager(requireContext(), 3)
+        recyclerView.layoutManager = GridLayoutManager(requireContext(), 3)
 
         recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                 super.onScrollStateChanged(recyclerView, newState)
                 if (!recyclerView.canScrollVertically(1) && newState == RecyclerView.SCROLL_STATE_IDLE) {
                     viewModel.getImage()
-                    val args = arguments?.let {
-                        ImageScreenFragmentArgs.fromBundle(
-                            it
-                        )
-                    }
-                    val categoryTitle= args?.title
-                    if (categoryTitle != null) {
-                        if(categoryTitle.isNotEmpty())
-                            viewModel.getDetailCategory(categoryTitle)
-                    }
+
+
                 }
             }
         })
@@ -96,11 +71,10 @@ class ImageScreenFragment : BaseFragment<FragmentImageScreenBinding, ImageScreen
     private fun observeImages() {
         viewModel.imageList.observe(viewLifecycleOwner) { resource ->
             recyclerViewAdapter.setListData(ArrayList(resource))
-            resource.map {
-                if (it.isLiked)
-                    Log.e("slm", it.id.toString())
-            }
 
+        }
+        viewModel.categoryDetailList.observe(viewLifecycleOwner) { resource ->
+            recyclerViewAdapter.setListData(ArrayList(resource))
         }
     }
 

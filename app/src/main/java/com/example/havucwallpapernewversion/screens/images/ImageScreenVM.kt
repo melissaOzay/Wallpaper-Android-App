@@ -5,9 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.havucwallpapernewversion.base.BaseViewModel
 import com.example.havucwallpapernewversion.features.categories.domain.usecase.GetCategoryDetailUseCase
-import com.example.havucwallpapernewversion.features.categories.domain.usecase.GetImagesCategoryUseCase
-import com.example.havucwallpapernewversion.features.images.domain.usecases.GetImagesUseCase
 import com.example.havucwallpapernewversion.features.images.domain.model.Image
+import com.example.havucwallpapernewversion.features.images.domain.usecases.GetImagesUseCase
 import com.example.havucwallpapernewversion.features.images.domain.usecases.LikeAndUnLikeImageUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -52,9 +51,10 @@ class ImageScreenVM @Inject constructor(
 
         }
     }
-     fun getDetailCategory(title:String){
+
+    fun getDetailCategory(title: String) {
         viewModelScope.launch {
-            val categoryList = getCategoryUseCase(currentPage,title)
+            val categoryList = getCategoryUseCase(currentPage, title)
             val currentList = categoryDetailList.value?.toMutableList() ?: mutableListOf()
             val imageList = categoryList.getOrNull()?.toMutableList() ?: mutableListOf()
             currentList.addAll(imageList)

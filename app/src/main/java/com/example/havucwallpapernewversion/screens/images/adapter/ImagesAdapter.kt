@@ -33,7 +33,7 @@ class ImagesAdapter(val listener: ImagesAdapterListener) :
             Picasso.get().load(item.imagePullPath).into(photo)
             favoriteToggle.isChecked = item.isLiked
             favoriteToggle.setOnClickListener {
-                    listener.addFavorite(item)
+                listener.addFavorite(item)
             }
         }
     }

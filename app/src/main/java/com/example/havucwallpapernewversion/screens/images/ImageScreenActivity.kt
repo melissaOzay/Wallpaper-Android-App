@@ -1,10 +1,11 @@
 package com.example.havucwallpapernewversion.screens.images
 
-import android.R
+
 import android.os.Bundle
 import androidx.activity.viewModels
-import androidx.navigation.ui.NavigationUI
-import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.setupWithNavController
+import com.example.havucwallpapernewversion.R
 import com.example.havucwallpapernewversion.base.BaseActivity
 import com.example.havucwallpapernewversion.databinding.ActivityImageScreenBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -21,9 +22,13 @@ class ImageScreenActivity : BaseActivity<ImageScreenVM, ActivityImageScreenBindi
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val navHostFragment = findViewById<BottomNavigationView>(R.id.bottom_nav)
-        val navController = findNavController(R.id.container)
-        NavigationUI.setupWithNavController(navHostFragment, navController)
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNav)
+
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView3)
+        val navController = navHostFragment?.findNavController()
+        if (navController != null) {
+            bottomNavigationView.setupWithNavController(navController)
+        }
     }
 
 }

@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.havucwallpapernewversion.base.BaseViewModel
 import com.example.havucwallpapernewversion.features.images.domain.model.Image
 import com.example.havucwallpapernewversion.features.images.domain.usecases.GetFavoriteImageUseCase
+import com.example.havucwallpapernewversion.features.images.domain.usecases.LikeAndUnLikeImageUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
@@ -15,7 +16,9 @@ import javax.inject.Inject
 @HiltViewModel
 class FavoriteVM @Inject constructor(
     private val getFavoriteImageUseCase: GetFavoriteImageUseCase,
-) : BaseViewModel() {
+    private val imageLikeAndUnLikeImageUseCase: LikeAndUnLikeImageUseCase,
+
+    ) : BaseViewModel() {
 
 
     private val _imageList = MutableLiveData<List<Image>>()
@@ -32,6 +35,10 @@ class FavoriteVM @Inject constructor(
 
 
         }
+    }
+
+    fun addFavorite(image: Image) {
+        imageLikeAndUnLikeImageUseCase(image)
     }
 
 }
