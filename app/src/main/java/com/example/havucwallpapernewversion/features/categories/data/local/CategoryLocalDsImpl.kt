@@ -4,15 +4,15 @@ import com.example.havucwallpapernewversion.data.local.db.category.dao.CategoryD
 import com.example.havucwallpapernewversion.data.local.db.category.entity.CategoryEntity
 import javax.inject.Inject
 
-class CategoryLocalDsImpl @Inject constructor(
+class CategoryLocalDSImpl @Inject constructor(
     private val categoryDAO: CategoryDAO,
-) : CategoryLocalDs {
+) : CategoryLocalDS {
 
     override suspend fun getCategories(): List<CategoryEntity> {
         return categoryDAO.getCategories()
     }
 
-    override suspend fun insertCategories(categoryEntity: CategoryEntity) {
+    override suspend fun insertCategory(categoryEntity: CategoryEntity) {
         return categoryDAO.insert(categoryEntity)
     }
 }

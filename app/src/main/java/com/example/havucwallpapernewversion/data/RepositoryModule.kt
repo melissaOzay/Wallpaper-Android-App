@@ -6,14 +6,10 @@ import com.example.havucwallpapernewversion.features.categories.data.repository.
 import com.example.havucwallpapernewversion.features.categories.data.repository.CategoryRepositoryImpl
 import com.example.havucwallpapernewversion.features.images.data.repository.ImageRepository
 import com.example.havucwallpapernewversion.features.images.data.repository.ImageRepositoryImpl
-import com.example.havucwallpapernewversion.features.images.data.api.ImageService
 import dagger.Binds
 import dagger.Module
-import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
-import dagger.hilt.components.SingletonComponent
-import javax.inject.Singleton
 
 @Module
 @InstallIn(ViewModelComponent::class)

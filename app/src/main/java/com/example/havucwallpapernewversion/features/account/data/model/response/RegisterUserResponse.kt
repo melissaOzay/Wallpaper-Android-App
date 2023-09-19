@@ -5,12 +5,8 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class RegisterUserResponse(
-    @SerialName("authozationKey")
-    val authozationKey: String,
-    @SerialName("isAllowNotification")
-    val isAllowNotification: Boolean,
-    @SerialName("udid")
-    val udid: String,
-    @SerialName("userId")
-    val userId: String
+    @SerialName("authozationKey") val authozationKey: String,
+    @SerialName("isAllowNotification") val isAllowNotification: Boolean,
+    @SerialName("udid") val udid: String,
+    @SerialName("userId") val userId: String
 )

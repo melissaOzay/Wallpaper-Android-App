@@ -4,7 +4,6 @@ import com.example.havucwallpapernewversion.features.account.data.api.AccountSer
 import com.example.havucwallpapernewversion.features.account.data.model.request.RegisterUserRequest
 import com.example.havucwallpapernewversion.features.account.data.model.response.BaseResponse
 import com.example.havucwallpapernewversion.features.account.data.model.response.RegisterUserResponse
-import retrofit2.Response
 import retrofit2.Retrofit
 import javax.inject.Inject
 
@@ -15,6 +14,6 @@ class AccountRemoteDSImp @Inject constructor(
         retrofit.create(AccountService::class.java)
     }
 
-    override suspend fun registerUser(userRequest: RegisterUserRequest):BaseResponse<RegisterUserResponse> =
+    override suspend fun registerUser(userRequest: RegisterUserRequest): BaseResponse<RegisterUserResponse> =
         accountService.registerUser(userRequest)
 }

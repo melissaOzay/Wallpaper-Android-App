@@ -1,5 +1,6 @@
 package com.example.havucwallpapernewversion.helper
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Build
 import android.provider.Settings
@@ -10,6 +11,7 @@ import javax.inject.Singleton
 
 @Singleton
 class DeviceHelper @Inject constructor(@ApplicationContext private val context: Context) {
+    @SuppressLint("HardwareIds")
     fun getDeviceUniqueId(): String {
         val androidId = Settings.Secure.getString(
             context.contentResolver,

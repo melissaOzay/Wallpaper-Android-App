@@ -1,10 +1,10 @@
 package com.example.havucwallpapernewversion.data
 
 import android.content.Context
-import com.example.havucwallpapernewversion.data.local.shared.CoreLocalHelper
-import com.example.havucwallpapernewversion.data.local.shared.CoreLocalHelperImpl
 import com.example.havucwallpapernewversion.data.local.LocalDS
 import com.example.havucwallpapernewversion.data.local.LocalDSImpl
+import com.example.havucwallpapernewversion.data.local.shared.CoreLocalHelper
+import com.example.havucwallpapernewversion.data.local.shared.CoreLocalHelperImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -27,9 +27,13 @@ class NetworkModule {
     fun providerGsonConverterFactory(): GsonConverterFactory {
         return GsonConverterFactory.create()
     }
+
     @Provides
     @Singleton
-    fun provideRetrofit(gsonConverterFactory: GsonConverterFactory,localHelper: LocalDS): Retrofit {
+    fun provideRetrofit(
+        gsonConverterFactory: GsonConverterFactory,
+        localHelper: LocalDS
+    ): Retrofit {
         val logging = HttpLoggingInterceptor()
         logging.setLevel(HttpLoggingInterceptor.Level.BODY)
         val okHttpClient = OkHttpClient.Builder()
@@ -57,10 +61,12 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun provideRetrofitClient(@ApplicationContext context: Context,
+    fun provideRetrofitClient(
+        @ApplicationContext context: Context,
     ): CoreLocalHelper {
         return CoreLocalHelperImpl(context)
     }
+
     @Singleton
     @Provides
     fun provideLocalDS(

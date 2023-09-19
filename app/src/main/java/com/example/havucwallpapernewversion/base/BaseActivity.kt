@@ -1,10 +1,9 @@
 package com.example.havucwallpapernewversion.base
 
 import android.os.Bundle
-import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
-import com.example.havucwallpapernewversion.screens.progressBar.LoadingDialog
+import com.example.havucwallpapernewversion.ui.progressBar.LoadingDialog
 
 abstract class BaseActivity<VM : BaseViewModel, B : ViewBinding> :
 AppCompatActivity() {

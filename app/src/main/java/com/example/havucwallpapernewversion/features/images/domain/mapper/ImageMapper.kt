@@ -5,9 +5,9 @@ import com.example.havucwallpapernewversion.features.images.data.model.ImageResp
 import com.example.havucwallpapernewversion.features.images.domain.model.Image
 
 fun ImageResponse.toImage(isLiked: Boolean) = Image(
-    id = imageId.toString(),
-    path = imagePath.toString(),
-    imagePullPath = imagePullPath.toString(),
+    id = imageId.orEmpty(),
+    path = imagePath.orEmpty(),
+    imagePullPath = imagePullPath.orEmpty(),
     isLiked = isLiked
 )
 
@@ -17,4 +17,6 @@ fun ImageEntity.toImage() = Image(
     imagePullPath = imageFullPath,
     isLiked = true
 )
+
+
 

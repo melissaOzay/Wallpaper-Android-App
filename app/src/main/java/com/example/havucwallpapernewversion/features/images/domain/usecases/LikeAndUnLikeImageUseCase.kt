@@ -7,7 +7,7 @@ import javax.inject.Inject
 class LikeAndUnLikeImageUseCase @Inject constructor(
     private val imageRepository: ImageRepository,
 ) {
-     operator fun invoke(image: Image) {
+    suspend operator fun invoke(image: Image) {
         imageRepository.likeAndUnlikeImage(image)
     }
 }

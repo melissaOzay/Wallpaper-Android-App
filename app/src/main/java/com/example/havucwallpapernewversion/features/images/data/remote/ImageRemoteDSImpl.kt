@@ -1,11 +1,8 @@
 package com.example.havucwallpapernewversion.features.images.data.remote
 
 import com.example.havucwallpapernewversion.features.account.data.model.response.BaseResponse
-import retrofit2.Response
 import com.example.havucwallpapernewversion.features.images.data.api.ImageService
-import com.example.havucwallpapernewversion.features.images.data.model.ImageBaseResponse
 import com.example.havucwallpapernewversion.features.images.data.model.ImageResponse
-import com.example.havucwallpapernewversion.features.images.data.repository.ImageRepository
 import retrofit2.Retrofit
 import javax.inject.Inject
 

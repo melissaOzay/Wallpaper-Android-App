@@ -11,4 +11,4 @@ data class ImageResponse(
     val imagePath: String?,
     @SerialName("imagePullPath")
     val imagePullPath: String?
-    )
+)

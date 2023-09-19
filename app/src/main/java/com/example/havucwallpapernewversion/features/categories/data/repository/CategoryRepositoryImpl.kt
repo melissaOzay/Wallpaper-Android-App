@@ -1,7 +1,7 @@
 package com.example.havucwallpapernewversion.features.categories.data.repository
 
-import com.example.havucwallpapernewversion.data.local.db.category.entity.CategoryEntity
-import com.example.havucwallpapernewversion.features.categories.data.local.CategoryLocalDs
+import android.util.Log
+import com.example.havucwallpapernewversion.features.categories.data.local.CategoryLocalDS
 import com.example.havucwallpapernewversion.features.categories.data.remote.CategoryRemoteDS
 import com.example.havucwallpapernewversion.features.categories.domain.mapper.toCategory
 import com.example.havucwallpapernewversion.features.categories.domain.mapper.toCategoryEntity
@@ -9,23 +9,23 @@ import com.example.havucwallpapernewversion.features.categories.domain.model.Cat
 import javax.inject.Inject
 
 class CategoryRepositoryImpl @Inject constructor(
-    private val categoryRemoteDs: CategoryRemoteDS,
-    private val categoryLocalDs: CategoryLocalDs
+    private val categoryRemoteDS: CategoryRemoteDS,
+    private val categoryLocalDS: CategoryLocalDS
 ) : CategoryRepository {
     override suspend fun getCategories(): Result<List<Category>> {
         return try {
-            val response = categoryRemoteDs.getCategories()
-            val localResponse = categoryLocalDs.getCategories()
-            if (localResponse.isEmpty()) {
+            val localCategories = categoryLocalDS.getCategories()
+            if (localCategories.isEmpty()) {
+                val response = categoryRemoteDS.getCategories()
                 response.data.map {
-                    categoryLocalDs.insertCategories(it.toCategoryEntity())
+                    categoryLocalDS.insertCategory(it.toCategoryEntity())
                 }
             }
-            Result.success(localResponse.map {
+            Result.success(localCategories.map {
                 it.toCategory()
             })
-        } catch (ex: java.lang.Exception) {
-            System.out.println("Error desc: " + ex.message)
+        } catch (ex: Exception) {
+            Log.e("Error desc: " , ex.message.toString())
             Result.failure(Exception(ex))
         }
     }

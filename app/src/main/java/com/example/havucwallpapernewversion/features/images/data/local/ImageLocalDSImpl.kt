@@ -3,7 +3,6 @@ package com.example.havucwallpapernewversion.features.images.data.local
 import com.example.havucwallpapernewversion.data.local.db.image.dao.ImageDAO
 import com.example.havucwallpapernewversion.data.local.db.image.entity.ImageEntity
 import com.example.havucwallpapernewversion.features.images.domain.model.Image
-import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -12,7 +11,7 @@ class ImageLocalDSImpl @Inject constructor(
     private val imageDAO: ImageDAO,
 ) : ImageLocalDS {
     private lateinit var image: Image
-    override fun getImagesObservable():List<ImageEntity> = imageDAO.getImages()
+    override fun getImagesObservable(): List<ImageEntity> = imageDAO.getImages()
 
     override fun removeImage(imageId: String) = imageDAO.deleteImage(imageId)
 

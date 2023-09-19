@@ -3,10 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".screens.images.ImageScreenActivity"
+    tools:context=".ui.home.HomeActivity"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragmentContainerView3"
+        android:id="@+id/fragment_container"
         android:name="androidx.navigation.fragment.NavHostFragment"
         app:defaultNavHost="true"
         android:layout_width="match_parent"
@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:backgroundTint="@color/onBackgroundColor"
-        app:layout_constraintBottom_toBottomOf="@+id/fragmentContainerView3"
+        app:layout_constraintBottom_toBottomOf="@+id/fragment_container"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints">
@@ -35,7 +35,7 @@
         app:labelVisibilityMode="unlabeled"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragmentContainerView3"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_container"
         app:itemIconTint="@drawable/bottom_selector"
         app:menu="@menu/menu_wallpaper" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,9 +7,9 @@ import com.example.havucwallpapernewversion.features.categories.domain.model.Cat
 import com.example.havucwallpapernewversion.features.images.domain.model.Image
 
 fun CategoryEntity.toCategory() = Category(
-    categoryQuery = this.query,
-    count = this.count,
-    categoryTitle = this.title,
+    categoryQuery = query,
+    count = count,
+    categoryTitle = title,
     image = thumbnail
 )
 fun CategoryResponse.toCategoryEntity() = CategoryEntity(
