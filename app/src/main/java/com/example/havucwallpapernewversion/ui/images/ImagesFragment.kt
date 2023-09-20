@@ -12,6 +12,7 @@ import com.example.havucwallpapernewversion.base.BaseFragment
 import com.example.havucwallpapernewversion.databinding.FragmentImageScreenBinding
 import com.example.havucwallpapernewversion.features.images.domain.model.Image
 import com.example.havucwallpapernewversion.ui.images.adapter.ImagesAdapter
+import com.example.havucwallpapernewversion.ui.images.adapter.`interface`.ImagesAdapterListener
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -19,7 +20,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class ImagesFragment : BaseFragment<FragmentImageScreenBinding, ImagesVM>() {
 
     private val imagesAdapter by lazy {
-        ImagesAdapter(listener = object : ImagesAdapter.ImagesAdapterListener {
+        ImagesAdapter(listener = object : ImagesAdapterListener {
             override fun likeOrUnLike(image: Image) {
                 viewModel.likeOrUnLike(image)
             }
@@ -46,7 +47,8 @@ class ImagesFragment : BaseFragment<FragmentImageScreenBinding, ImagesVM>() {
 
     override fun onResume() {
         super.onResume()
-        viewModel.getImage()
+        categoryOrImage()
+
     }
 
     private fun initRecyclerView() {
@@ -57,10 +59,24 @@ class ImagesFragment : BaseFragment<FragmentImageScreenBinding, ImagesVM>() {
                 override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                     super.onScrollStateChanged(recyclerView, newState)
                     if (!recyclerView.canScrollVertically(1) && newState == RecyclerView.SCROLL_STATE_IDLE) {
-                        viewModel.getImage()
+                        categoryOrImage()
                     }
                 }
             })
+        }
+    }
+
+    private fun categoryOrImage() {
+        val args = arguments
+        when (args?.getSerializable("type") as ImagesScreenType) {
+            ImagesScreenType.HOME -> {
+                viewModel.getImage()
+            }
+
+            ImagesScreenType.CATEGORY_DETAIL -> {
+                val title = args.get("title")
+                viewModel.getDetailCategory(title.toString())
+            }
         }
     }
 

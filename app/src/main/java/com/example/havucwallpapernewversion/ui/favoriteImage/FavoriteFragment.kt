@@ -10,13 +10,14 @@ import com.example.havucwallpapernewversion.base.BaseFragment
 import com.example.havucwallpapernewversion.databinding.FragmentFavoriteBinding
 import com.example.havucwallpapernewversion.features.images.domain.model.Image
 import com.example.havucwallpapernewversion.ui.images.adapter.ImagesAdapter
+import com.example.havucwallpapernewversion.ui.images.adapter.`interface`.ImagesAdapterListener
 import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
 class FavoriteFragment : BaseFragment<FragmentFavoriteBinding, FavoriteVM>() {
     private val imageAdapter by lazy {
-        ImagesAdapter(object : ImagesAdapter.ImagesAdapterListener {
+        ImagesAdapter(object : ImagesAdapterListener {
             override fun likeOrUnLike(image: Image) {
                 viewModel.likeOrUnLike(image)
             }

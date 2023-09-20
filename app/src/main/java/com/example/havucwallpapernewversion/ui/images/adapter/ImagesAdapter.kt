@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.havucwallpapernewversion.R
 import com.example.havucwallpapernewversion.features.images.domain.model.Image
+import com.example.havucwallpapernewversion.ui.images.adapter.`interface`.ImagesAdapterListener
 import com.squareup.picasso.Picasso
 
 class ImagesAdapter(private val listener: ImagesAdapterListener) :
@@ -51,10 +52,6 @@ class ImagesAdapter(private val listener: ImagesAdapterListener) :
 
     override fun getItemCount(): Int {
         return images.count()
-    }
-
-    interface ImagesAdapterListener {
-        fun likeOrUnLike(image: Image)
     }
 
 }

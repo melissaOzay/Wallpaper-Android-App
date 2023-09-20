@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.havucwallpapernewversion.base.BaseViewModel
+import com.example.havucwallpapernewversion.features.categories.domain.usecase.GetCategoryDetailUseCase
 import com.example.havucwallpapernewversion.features.images.domain.model.Image
 import com.example.havucwallpapernewversion.features.images.domain.usecases.GetImagesUseCase
 import com.example.havucwallpapernewversion.features.images.domain.usecases.LikeAndUnLikeImageUseCase
@@ -15,6 +16,7 @@ import javax.inject.Inject
 class ImagesVM @Inject constructor(
     private val getImagesUseCase: GetImagesUseCase,
     private val imageLikeAndUnLikeImageUseCase: LikeAndUnLikeImageUseCase,
+    private val getCategoryUseCase: GetCategoryDetailUseCase,
 ) : BaseViewModel() {
 
     private val _imageList = MutableLiveData<List<Image>>()
@@ -40,6 +42,19 @@ class ImagesVM @Inject constructor(
             } else {
                 _errorMessage.postValue(response.exceptionOrNull()?.message)
             }
+        }
+    }
+
+    fun getDetailCategory(title: String) {
+        showLoading()
+        viewModelScope.launch {
+            val categoryList = getCategoryUseCase(currentPage, title)
+            hideLoading()
+            val currentList = imageList.value?.toMutableList() ?: mutableListOf()
+            val imageList = categoryList.getOrNull()?.toMutableList() ?: mutableListOf()
+            currentList.addAll(imageList)
+            _imageList.postValue(currentList)
+            currentPage += 1
         }
     }
 

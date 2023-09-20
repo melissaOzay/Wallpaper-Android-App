@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.havucwallpapernewversion.R
 import com.example.havucwallpapernewversion.features.categories.domain.model.Category
+import com.example.havucwallpapernewversion.ui.categories.adapter.`interface`.CategoryAdapterListener
 import com.squareup.picasso.Picasso
 
 class CategoryListAdapter(private val listener: CategoryAdapterListener) :
@@ -53,10 +54,6 @@ class CategoryListAdapter(private val listener: CategoryAdapterListener) :
 
     override fun getItemCount(): Int {
         return category.count()
-    }
-
-    interface CategoryAdapterListener {
-        fun clickCategory(categoryTitle: String)
     }
 
 }

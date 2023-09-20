@@ -12,15 +12,18 @@
         tools:layout="@layout/fragment_category">
 
         <action
-            android:id="@+id/action_categoryFragment_to_categoryDetailFragment"
-            app:destination="@id/categoryDetailFragment" />
+            android:id="@+id/action_categoryFragment_to_imageDetailFragment"
+            app:destination="@id/imageCategoryFragment" />
     </fragment>
     <fragment
         android:id="@+id/imageScreenFragment"
         android:name="com.example.havucwallpapernewversion.ui.images.ImagesFragment"
         android:label="ImageScreenFragment"
         tools:layout="@layout/fragment_image_screen">
-
+        <argument
+            android:name="type"
+            android:defaultValue="HOME"
+            app:argType="com.example.havucwallpapernewversion.ui.images.ImagesScreenType" />
     </fragment>
     <fragment
         android:id="@+id/favoriteFragment"
@@ -28,15 +31,18 @@
         android:label="FavoriteFragment"
         tools:layout="@layout/fragment_favorite" />
     <fragment
-        android:id="@+id/categoryDetailFragment"
-        android:name="com.example.havucwallpapernewversion.ui.categoryDetail.CategoryDetailFragment"
-        android:label="CategoryDetailFragment"
-        tools:layout="@layout/fragment_category_detail">
+        android:id="@+id/imageCategoryFragment"
+        android:name="com.example.havucwallpapernewversion.ui.images.ImagesFragment"
+        android:label="ImageScreenFragment1"
+        tools:layout="@layout/fragment_image_screen">
+        <argument
+            android:name="type"
+            android:defaultValue="CATEGORY_DETAIL"
+            app:argType="com.example.havucwallpapernewversion.ui.images.ImagesScreenType" />
         <argument
             android:name="title"
             android:defaultValue="null"
             app:argType="string"
             app:nullable="false" />
     </fragment>
-
 </navigation>
