@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.havucwallpapernewversion.base.BaseViewModel
 import com.example.havucwallpapernewversion.features.categories.domain.usecase.GetCategoryDetailUseCase
 import com.example.havucwallpapernewversion.features.images.domain.model.Image
+import com.example.havucwallpapernewversion.features.images.domain.usecases.GetFavoriteImageUseCase
 import com.example.havucwallpapernewversion.features.images.domain.usecases.GetImagesUseCase
 import com.example.havucwallpapernewversion.features.images.domain.usecases.LikeAndUnLikeImageUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -16,6 +17,7 @@ import javax.inject.Inject
 class ImagesVM @Inject constructor(
     private val getImagesUseCase: GetImagesUseCase,
     private val imageLikeAndUnLikeImageUseCase: LikeAndUnLikeImageUseCase,
+    private val getFavoriteImageUseCase: GetFavoriteImageUseCase,
     private val getCategoryUseCase: GetCategoryDetailUseCase,
 ) : BaseViewModel() {
 
@@ -61,6 +63,16 @@ class ImagesVM @Inject constructor(
     fun likeOrUnLike(image: Image) {
         viewModelScope.launch {
             imageLikeAndUnLikeImageUseCase(image)
+        }
+    }
+    fun getFavoriteImage() {
+        showLoading()
+        viewModelScope.launch {
+            val imageList = getFavoriteImageUseCase.invoke()
+            hideLoading()
+            _imageList.postValue(imageList)
+
+
         }
     }
 }

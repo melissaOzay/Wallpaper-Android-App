@@ -27,13 +27,19 @@
     </fragment>
     <fragment
         android:id="@+id/favoriteFragment"
-        android:name="com.example.havucwallpapernewversion.ui.favoriteImage.FavoriteFragment"
+        android:name="com.example.havucwallpapernewversion.ui.images.ImagesFragment"
         android:label="FavoriteFragment"
-        tools:layout="@layout/fragment_favorite" />
+        tools:layout="@layout/fragment_image_screen">
+    <argument
+        android:name="type"
+        android:defaultValue="FAVORİTE"
+        app:argType="com.example.havucwallpapernewversion.ui.images.ImagesScreenType" />
+    </fragment>
+
     <fragment
         android:id="@+id/imageCategoryFragment"
         android:name="com.example.havucwallpapernewversion.ui.images.ImagesFragment"
-        android:label="ImageScreenFragment1"
+        android:label="imageCategoryFragment"
         tools:layout="@layout/fragment_image_screen">
         <argument
             android:name="type"

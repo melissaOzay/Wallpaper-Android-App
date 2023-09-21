@@ -77,12 +77,15 @@ class ImagesFragment : BaseFragment<FragmentImageScreenBinding, ImagesVM>() {
                 val title = args.get("title")
                 viewModel.getDetailCategory(title.toString())
             }
+            ImagesScreenType.FAVORITE -> {
+                viewModel.getFavoriteImage()
+            }
         }
     }
 
     private fun observeImages() {
         viewModel.imageList.observe(viewLifecycleOwner) { resource ->
-            imagesAdapter.setListData(ArrayList(resource))
+            imagesAdapter.setListData(resource)
         }
     }
 
