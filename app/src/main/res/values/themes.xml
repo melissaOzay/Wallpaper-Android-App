@@ -8,6 +8,13 @@
         <item name="colorOnBackground">@color/onBackgroundColor</item>
 
     </style>
+    <style name="Theme.Tutorials.NoActionBar">
+        <item name="colorPrimaryDark">@color/primaryDarkColor</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="backgroundColor">@color/backgroundColor</item>
+        <item name="android:background">@color/backgroundColor</item>
+        <item name="colorOnBackground">@color/onBackgroundColor</item>
+    </style>
 
     <style name="Theme.Tutorials" parent="Base.Theme.Tutorials" />
 

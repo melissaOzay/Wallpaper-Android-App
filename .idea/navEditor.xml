@@ -53,6 +53,18 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="imageDetail">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-1071" />
+                            <option name="y" value="-2177" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="imageScreenFragment">
                     <value>
                       <LayoutPositions>

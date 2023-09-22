@@ -1,5 +1,6 @@
 package com.example.havucwallpapernewversion.ui.images
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.havucwallpapernewversion.base.BaseFragment
 import com.example.havucwallpapernewversion.databinding.FragmentImageScreenBinding
 import com.example.havucwallpapernewversion.features.images.domain.model.Image
+import com.example.havucwallpapernewversion.ui.imageDetail.ImageDetailActivity
 import com.example.havucwallpapernewversion.ui.images.adapter.ImagesAdapter
 import com.example.havucwallpapernewversion.ui.images.adapter.`interface`.ImagesAdapterListener
 import dagger.hilt.android.AndroidEntryPoint
@@ -19,10 +21,22 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class ImagesFragment : BaseFragment<FragmentImageScreenBinding, ImagesVM>() {
 
+    override val viewModel: ImagesVM by viewModels()
+
     private val imagesAdapter by lazy {
         ImagesAdapter(listener = object : ImagesAdapterListener {
             override fun likeOrUnLike(image: Image) {
                 viewModel.likeOrUnLike(image)
+            }
+
+            override fun clickItem(url: String, likeOrUnlike: Boolean, id: String) {
+                val intent = Intent(activity, ImageDetailActivity::class.java)
+                intent.apply {
+                    putExtra("imageUrl", url)
+                    putExtra("likeOrUnlike", likeOrUnlike)
+                    putExtra("id", id)
+                }
+                startActivity(intent)
             }
         })
     }
@@ -33,22 +47,16 @@ class ImagesFragment : BaseFragment<FragmentImageScreenBinding, ImagesVM>() {
         return FragmentImageScreenBinding.inflate(layoutInflater)
     }
 
-
-    override val viewModel: ImagesVM by viewModels()
-
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observeImages()
         initRecyclerView()
         observeErrorMessage()
-
     }
 
     override fun onResume() {
         super.onResume()
         categoryOrImage()
-
     }
 
     private fun initRecyclerView() {
@@ -77,6 +85,7 @@ class ImagesFragment : BaseFragment<FragmentImageScreenBinding, ImagesVM>() {
                 val title = args.get("title")
                 viewModel.getDetailCategory(title.toString())
             }
+
             ImagesScreenType.FAVORITE -> {
                 viewModel.getFavoriteImage()
             }

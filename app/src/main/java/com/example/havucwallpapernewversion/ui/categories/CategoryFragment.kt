@@ -17,6 +17,8 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class CategoryFragment : BaseFragment<FragmentCategoryBinding, CategoryVM>() {
 
+    override val viewModel: CategoryVM by viewModels()
+
     private val categoryAdapter by lazy {
         CategoryListAdapter(object : CategoryAdapterListener {
             override fun clickCategory(categoryTitle: String) {
@@ -31,7 +33,6 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding, CategoryVM>() {
         return FragmentCategoryBinding.inflate(layoutInflater)
     }
 
-    override val viewModel: CategoryVM by viewModels()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initRecyclerView()
@@ -55,8 +56,11 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding, CategoryVM>() {
     private fun navigateCategoryDetail(categoryTitle: String) {
         val action =
             CategoryFragmentDirections.actionCategoryFragmentToImageDetailFragment()
-        action.type = ImagesScreenType.CATEGORY_DETAIL
-        action.title = categoryTitle
+
+        action.apply {
+            type = ImagesScreenType.CATEGORY_DETAIL
+            title = categoryTitle
+        }
         findNavController().navigate(action)
     }
 

@@ -36,6 +36,9 @@ class ImagesAdapter(private val listener: ImagesAdapterListener) :
             favoriteToggle.setOnClickListener {
                 listener.likeOrUnLike(item)
             }
+            photo.setOnClickListener {
+                listener.clickItem(item.imagePullPath, item.isLiked, item.id)
+            }
         }
     }
 
