@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">havuc wallpaper new version</string>
+    <string name="favorites_are_empty">There is no favorited image.</string>
 </resources>

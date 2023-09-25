@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.havucwallpapernewversion.R
 import com.example.havucwallpapernewversion.features.categories.domain.model.Category
 import com.example.havucwallpapernewversion.ui.categories.adapter.`interface`.CategoryAdapterListener
+import com.squareup.picasso.NetworkPolicy
 import com.squareup.picasso.Picasso
 
 class CategoryListAdapter(private val listener: CategoryAdapterListener) :
@@ -31,7 +32,20 @@ class CategoryListAdapter(private val listener: CategoryAdapterListener) :
         private val count: TextView = view.findViewById(R.id.tv_count)
 
         fun bindItems(item: Category, listener: CategoryAdapterListener) {
-            Picasso.get().load(item.image).into(photo)
+            Picasso.get()
+                .load(item.image)
+                .placeholder(R.drawable.ic_place_holder)
+                .networkPolicy(NetworkPolicy.OFFLINE)
+                .into(photo, object : com.squareup.picasso.Callback {
+                    override fun onSuccess() {}
+
+                    override fun onError(e: java.lang.Exception?) {
+                        Picasso.get()
+                            .load(item.image)
+                            .placeholder(R.drawable.ic_place_holder)
+                            .into(photo)
+                    }
+                })
             photo.setColorFilter(Color.argb(100, 255, 255, 255))
             title.text = item.categoryTitle
             count.text = "-${item.count} Wallpaper-"

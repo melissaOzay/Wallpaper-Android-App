@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.havucwallpapernewversion.R
 import com.example.havucwallpapernewversion.features.images.domain.model.Image
 import com.example.havucwallpapernewversion.ui.images.adapter.`interface`.ImagesAdapterListener
+import com.squareup.picasso.NetworkPolicy
 import com.squareup.picasso.Picasso
 
 class ImagesAdapter(private val listener: ImagesAdapterListener) :
@@ -30,7 +31,20 @@ class ImagesAdapter(private val listener: ImagesAdapterListener) :
         private val favoriteToggle: ToggleButton = view.findViewById(R.id.toggleButton)
 
         fun bindItems(item: Image, listener: ImagesAdapterListener) {
-            Picasso.get().load(item.imagePullPath).into(photo)
+            Picasso.get()
+                .load(item.imagePullPath)
+                .placeholder(R.drawable.ic_place_holder)
+                .networkPolicy(NetworkPolicy.OFFLINE)
+                .into(photo, object : com.squareup.picasso.Callback {
+                    override fun onSuccess() {}
+
+                    override fun onError(e: java.lang.Exception?) {
+                        Picasso.get()
+                            .load(item.imagePullPath)
+                            .placeholder(R.drawable.ic_place_holder)
+                            .into(photo)
+                    }
+                })
             favoriteToggle.isChecked = item.isLiked
             setIsRecyclable(false)
             favoriteToggle.setOnClickListener {

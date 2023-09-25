@@ -95,6 +95,10 @@ class ImagesFragment : BaseFragment<FragmentImageScreenBinding, ImagesVM>() {
     private fun observeImages() {
         viewModel.imageList.observe(viewLifecycleOwner) { resource ->
             imagesAdapter.setListData(resource)
+            if (resource.isEmpty()) {
+                binding.ivPhoto.visibility = View.VISIBLE
+                binding.tvTitle.visibility = View.VISIBLE
+            }
         }
     }
 

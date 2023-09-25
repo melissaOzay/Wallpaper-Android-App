@@ -9,15 +9,18 @@ import android.os.StrictMode
 import android.os.StrictMode.ThreadPolicy
 import android.widget.Toast
 import androidx.activity.viewModels
+import com.example.havucwallpapernewversion.R
 import com.example.havucwallpapernewversion.base.BaseActivity
 import com.example.havucwallpapernewversion.databinding.ActivityImageDetailBinding
 import com.example.havucwallpapernewversion.features.images.domain.model.Image
+import com.squareup.picasso.NetworkPolicy
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import java.io.File
 import java.io.IOException
 import java.io.InputStream
 import java.net.URL
+import java.util.UUID
 
 
 @AndroidEntryPoint
@@ -36,7 +39,20 @@ class ImageDetailActivity : BaseActivity<ImageDetailVM, ActivityImageDetailBindi
             val imageUrl = intent.getStringExtra("imageUrl")
             val likeOrUnLike = intent.getBooleanExtra("likeOrUnlike", false)
             val id = intent.getStringExtra("id")
-            Picasso.get().load(imageUrl).into(binding.ivPhoto)
+            Picasso.get()
+                .load(imageUrl)
+                .placeholder(R.drawable.ic_place_holder)
+                .networkPolicy(NetworkPolicy.OFFLINE)
+                .into(binding.ivPhoto, object : com.squareup.picasso.Callback {
+                    override fun onSuccess() {}
+
+                    override fun onError(e: java.lang.Exception?) {
+                        Picasso.get()
+                            .load(imageUrl)
+                            .placeholder(R.drawable.ic_place_holder)
+                            .into(binding.ivPhoto)
+                    }
+                })
             with(binding) {
                 ivFavorite.isChecked = likeOrUnLike
                 ivFavorite.setOnClickListener {
@@ -76,7 +92,7 @@ class ImageDetailActivity : BaseActivity<ImageDetailVM, ActivityImageDetailBindi
     }
 
     private fun downloadImageNew(downloadUrlOfImage: String) {
-        val fileName = "Wallpaper_download.jpeg"
+        val fileName = "Wallpaper_${UUID.randomUUID()}.jpeg"
         try {
             val dm = getSystemService(DOWNLOAD_SERVICE) as DownloadManager
             val downloadUri = Uri.parse(downloadUrlOfImage)
