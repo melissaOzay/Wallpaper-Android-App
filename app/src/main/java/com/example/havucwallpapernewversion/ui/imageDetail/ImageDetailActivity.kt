@@ -35,7 +35,7 @@ class ImageDetailActivity : BaseActivity<ImageDetailVM, ActivityImageDetailBindi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val intent = intent
-        if (intent != null) {
+        intent.let {
             val imageUrl = intent.getStringExtra("imageUrl")
             val likeOrUnLike = intent.getBooleanExtra("likeOrUnlike", false)
             val id = intent.getStringExtra("id")

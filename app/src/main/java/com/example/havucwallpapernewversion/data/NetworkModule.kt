@@ -10,6 +10,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import okhttp3.Cache
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -18,6 +19,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
+
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -31,15 +33,19 @@ class NetworkModule {
     @Provides
     @Singleton
     fun provideRetrofit(
+        @ApplicationContext context: Context,
         gsonConverterFactory: GsonConverterFactory,
         localHelper: LocalDS
     ): Retrofit {
         val logging = HttpLoggingInterceptor()
+        val cacheSize = 10 * 1024 * 1024
+        val cache = Cache(context.cacheDir, cacheSize.toLong())
         logging.setLevel(HttpLoggingInterceptor.Level.BODY)
         val okHttpClient = OkHttpClient.Builder()
             .connectTimeout(60, TimeUnit.SECONDS)
             .writeTimeout(120, TimeUnit.SECONDS)
             .readTimeout(60, TimeUnit.SECONDS)
+            .cache(cache)
             .addInterceptor(Interceptor { chain ->
                 val request: Request =
                     chain.request().newBuilder()
