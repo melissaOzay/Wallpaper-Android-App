@@ -3,44 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_host"
-    app:startDestination="@id/imageScreenFragment">
+    app:startDestination="@id/tabFragment">
+
 
     <fragment
-        android:id="@+id/categoryFragment"
-        android:name="com.example.havucwallpapernewversion.ui.categories.CategoryFragment"
-        android:label="CategoryFragment"
-        tools:layout="@layout/fragment_category">
-
+        android:id="@+id/tabFragment"
+        android:name="com.example.havucwallpapernewversion.ui.tab.TabFragment"
+        android:label="TabFragment">
         <action
-            android:id="@+id/action_categoryFragment_to_imageDetailFragment"
-            app:destination="@id/imageCategoryFragment" />
+            android:id="@+id/action_tabFragment_to_categoryDetailFragment"
+            app:destination="@id/categoryDetailFragment" />
     </fragment>
     <fragment
-        android:id="@+id/imageScreenFragment"
+        android:id="@+id/categoryDetailFragment"
         android:name="com.example.havucwallpapernewversion.ui.images.ImagesFragment"
-        android:label="ImageScreenFragment"
-        tools:layout="@layout/fragment_image_screen">
-        <argument
-            android:name="type"
-            android:defaultValue="HOME"
-            app:argType="com.example.havucwallpapernewversion.ui.images.ImagesScreenType" />
-    </fragment>
-    <fragment
-        android:id="@+id/favoriteFragment"
-        android:name="com.example.havucwallpapernewversion.ui.images.ImagesFragment"
-        android:label="FavoriteFragment"
-        tools:layout="@layout/fragment_image_screen">
-    <argument
-        android:name="type"
-        android:defaultValue="FAVORİTE"
-        app:argType="com.example.havucwallpapernewversion.ui.images.ImagesScreenType" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/imageCategoryFragment"
-        android:name="com.example.havucwallpapernewversion.ui.images.ImagesFragment"
-        android:label="imageCategoryFragment"
-        tools:layout="@layout/fragment_image_screen">
+        tools:layout="@layout/fragment_image_screen"
+        android:label="ImagesFragment">
         <argument
             android:name="type"
             android:defaultValue="CATEGORY_DETAIL"
@@ -51,4 +29,6 @@
             app:argType="string"
             app:nullable="false" />
     </fragment>
+
+
 </navigation>

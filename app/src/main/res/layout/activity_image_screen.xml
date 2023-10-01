@@ -1,41 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.HomeActivity"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    tools:context=".ui.home.HomeActivity">
+
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragment_container"
         android:name="androidx.navigation.fragment.NavHostFragment"
-        app:defaultNavHost="true"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="60dp"
-        app:navGraph="@navigation/nav_host"
-        android:layout_above="@+id/bottomNav" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:backgroundTint="@color/onBackgroundColor"
-        app:layout_constraintBottom_toBottomOf="@+id/fragment_container"
+        app:defaultNavHost="true"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints">
+        app:layout_constraintTop_toTopOf="parent"
+        app:navGraph="@navigation/nav_host" />
 
-    </View>
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNav"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        style="@style/Widget.MaterialComponents.BottomNavigationView.Colored"
-        app:labelVisibilityMode="unlabeled"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_container"
-        app:itemIconTint="@drawable/bottom_selector"
-        app:menu="@menu/menu_wallpaper" />
 </androidx.constraintlayout.widget.ConstraintLayout>

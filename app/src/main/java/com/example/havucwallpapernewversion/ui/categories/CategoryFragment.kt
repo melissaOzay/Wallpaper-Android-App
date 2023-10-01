@@ -5,14 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.havucwallpapernewversion.base.BaseFragment
 import com.example.havucwallpapernewversion.databinding.FragmentCategoryBinding
 import com.example.havucwallpapernewversion.ui.categories.adapter.CategoryListAdapter
 import com.example.havucwallpapernewversion.ui.categories.adapter.`interface`.CategoryAdapterListener
-import com.example.havucwallpapernewversion.ui.images.ImagesScreenType
+import com.example.havucwallpapernewversion.ui.tab.TabFragment
 import dagger.hilt.android.AndroidEntryPoint
+
 
 @AndroidEntryPoint
 class CategoryFragment : BaseFragment<FragmentCategoryBinding, CategoryVM>() {
@@ -54,14 +55,10 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding, CategoryVM>() {
     }
 
     private fun navigateCategoryDetail(categoryTitle: String) {
-        val action =
-            CategoryFragmentDirections.actionCategoryFragmentToImageDetailFragment()
+        val navHostFragment = parentFragment as NavHostFragment?
+        val parent: TabFragment? = navHostFragment!!.parentFragment as TabFragment?
+        parent?.openCategoryDetail(categoryTitle)
 
-        action.apply {
-            type = ImagesScreenType.CATEGORY_DETAIL
-            title = categoryTitle
-        }
-        findNavController().navigate(action)
     }
 
 }

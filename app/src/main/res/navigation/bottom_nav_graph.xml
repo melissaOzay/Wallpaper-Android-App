@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottom_nav_graph"
+    app:startDestination="@id/imageScreenFragment">
+
+    <fragment
+        android:id="@+id/categoryFragment"
+        android:name="com.example.havucwallpapernewversion.ui.categories.CategoryFragment"
+        android:label="CategoryFragment"
+        tools:layout="@layout/fragment_category">
+
+    </fragment>
+    <fragment
+        android:id="@+id/imageScreenFragment"
+        android:name="com.example.havucwallpapernewversion.ui.images.ImagesFragment"
+        android:label="ImageScreenFragment"
+        tools:layout="@layout/fragment_image_screen">
+        <argument
+            android:name="type"
+            android:defaultValue="HOME"
+            app:argType="com.example.havucwallpapernewversion.ui.images.ImagesScreenType" />
+    </fragment>
+    <fragment
+        android:id="@+id/favoriteFragment"
+        android:name="com.example.havucwallpapernewversion.ui.images.ImagesFragment"
+        android:label="FavoriteFragment"
+        tools:layout="@layout/fragment_image_screen">
+        <argument
+            android:name="type"
+            android:defaultValue="FAVORİTE"
+            app:argType="com.example.havucwallpapernewversion.ui.images.ImagesScreenType" />
+    </fragment>
+
+</navigation>

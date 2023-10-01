@@ -1,5 +1,6 @@
 package com.example.havucwallpapernewversion.ui.images
 
+import android.R
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -15,6 +16,7 @@ import com.example.havucwallpapernewversion.features.images.domain.model.Image
 import com.example.havucwallpapernewversion.ui.imageDetail.ImageDetailActivity
 import com.example.havucwallpapernewversion.ui.images.adapter.ImagesAdapter
 import com.example.havucwallpapernewversion.ui.images.adapter.`interface`.ImagesAdapterListener
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 
 
