@@ -41,7 +41,6 @@ class ImagesAdapter(private val listener: ImagesAdapterListener) :
                     override fun onError(e: java.lang.Exception?) {
                         Picasso.get()
                             .load(item.imagePullPath)
-                            .placeholder(R.drawable.ic_place_holder)
                             .into(photo)
                     }
                 })

@@ -42,7 +42,6 @@ class CategoryListAdapter(private val listener: CategoryAdapterListener) :
                     override fun onError(e: java.lang.Exception?) {
                         Picasso.get()
                             .load(item.image)
-                            .placeholder(R.drawable.ic_place_holder)
                             .into(photo)
                     }
                 })

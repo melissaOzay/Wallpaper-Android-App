@@ -49,7 +49,6 @@ class ImageDetailActivity : BaseActivity<ImageDetailVM, ActivityImageDetailBindi
                     override fun onError(e: java.lang.Exception?) {
                         Picasso.get()
                             .load(imageUrl)
-                            .placeholder(R.drawable.ic_place_holder)
                             .into(binding.ivPhoto)
                     }
                 })

@@ -26,21 +26,22 @@ class SplashVM @Inject constructor(
 
     init {
         viewModelScope.launch {
-            val response = registerUserUseCase(
+/*            val response = registerUserUseCase(
                 RegisterUserRequest(
                     "fIU9lZa4RuWfJM4Bera4HK:APA91bEZ1P9g-TM556jLrFBjqapCKIOp3oaXTmwzKx1ke2Ly7fBnb_Nh9wFYCMqPp-RoxWEeEzuRRkImWRWezAzawoO2GPsptAECCSJoIUSjgB4Xn9h4ClDABIjRyxYkYbK61q0twzfN",
                     deviceHelper.getDeviceUniqueId()
                 )
-            )
+            )*/
             getCategoryUseCase()
+            openMainScreen.value = true
 
 
-            if (response.isFailure) {
+/*            if (response.isFailure) {
                 _errorMessage.postValue(response.getOrNull()?.error.orEmpty())
                 openMainScreen.value = false
             } else {
                 openMainScreen.value = true
-            }
+            }*/
         }
     }
 }

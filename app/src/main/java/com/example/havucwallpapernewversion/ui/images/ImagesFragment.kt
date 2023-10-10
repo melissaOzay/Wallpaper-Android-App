@@ -54,25 +54,20 @@ class ImagesFragment : BaseFragment<FragmentImageScreenBinding, ImagesVM>() {
         observeImages()
         initRecyclerView()
         observeErrorMessage()
+
     }
 
-    override fun onResume() {
-        super.onResume()
+    override fun onStart() {
+        super.onStart()
         categoryOrImage()
+
     }
 
     private fun initRecyclerView() {
         with(binding.recyclerView) {
             adapter = imagesAdapter
             layoutManager = GridLayoutManager(requireContext(), 3)
-            addOnScrollListener(object : RecyclerView.OnScrollListener() {
-                override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
-                    super.onScrollStateChanged(recyclerView, newState)
-                    if (!recyclerView.canScrollVertically(1) && newState == RecyclerView.SCROLL_STATE_IDLE) {
-                        categoryOrImage()
-                    }
-                }
-            })
+
         }
     }
 

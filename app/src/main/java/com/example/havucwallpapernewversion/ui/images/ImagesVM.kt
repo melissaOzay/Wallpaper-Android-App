@@ -32,26 +32,21 @@ class ImagesVM @Inject constructor(
 
     fun getImage() {
         viewModelScope.launch {
-            showLoading()
             val response = getImagesUseCase(currentPage)
             if (response.isSuccess) {
-                hideLoading()
                 val currentList = imageList.value?.toMutableList() ?: mutableListOf()
                 val imageList = response.getOrNull()?.toMutableList() ?: mutableListOf()
                 currentList.addAll(imageList)
-                _imageList.postValue(currentList)
+                _imageList.postValue(imageList)
                 currentPage += 1
-            } else {
-                _errorMessage.postValue(response.exceptionOrNull()?.message)
+
             }
         }
     }
 
     fun getDetailCategory(title: String) {
-        showLoading()
         viewModelScope.launch {
             val categoryList = getCategoryUseCase(currentPage, title)
-            hideLoading()
             val currentList = imageList.value?.toMutableList() ?: mutableListOf()
             val imageList = categoryList.getOrNull()?.toMutableList() ?: mutableListOf()
             currentList.addAll(imageList)
@@ -65,6 +60,7 @@ class ImagesVM @Inject constructor(
             imageLikeAndUnLikeImageUseCase(image)
         }
     }
+
     fun getFavoriteImage() {
         showLoading()
         viewModelScope.launch {
