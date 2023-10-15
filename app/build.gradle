@@ -49,13 +49,13 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+
     //Dagger
     implementation("com.google.dagger:hilt-android:2.45")
     kapt("com.google.dagger:hilt-android-compiler:2.45")
 
+    //Data-store
     implementation "androidx.datastore:datastore-preferences:1.0.0"
-
-
 
     //Retrofit
     implementation "com.squareup.retrofit2:retrofit:2.9.0"
@@ -69,12 +69,14 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui-ktx:2.5.2'
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1"
 
-
+    //activity-fragment
     implementation 'androidx.fragment:fragment-ktx:1.6.1'
     implementation("androidx.activity:activity-ktx:1.7.2")
 
+    //picasso
     implementation 'com.squareup.picasso:picasso:2.71828'
 
+    //leak-canary
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.10'
 
     //Room
