@@ -3,17 +3,18 @@ Welcome to the Awesome Wallpaper App, a fantastic tool for finding and setting b
 
 ## My Use Technologies
 *1) RecyclerView*,<br/>
-*2)  LiveData*,<br/>
+*2)  ViewBinding*,<br/>
 *3) Mvvm*,<br/>
 *5) Repository*,<br/>
-*6) Room DataBase*<br/>
-*7) Dagger Hilt*<br/>
-*8) Retrofit*<br/>
-*9) Picasso Cache*<br/>
-*10) Network Cache*<br/>
-*11) Leak Canary*<br/>
-*12) Mocking*<br/>
-*13) Splash Theme*<br/>
+*6) Room DataBase,*<br/>
+*7) Dagger Hilt,*<br/>
+*8) OkHttp and Retrofit,*<br/>
+*9) Picasso Caching,*<br/>
+*10) Network Caching,*<br/>
+*11) Leak Canary,*<br/>
+*12) Mockk,*<br/>
+*13) Splash Theme,*<br/>
+*13) Navigation,*<br/>
 
 ## 📷 Pictures related to the application are located below
  #### 👉 Home Page
