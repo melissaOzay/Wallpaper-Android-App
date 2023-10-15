@@ -14,7 +14,7 @@ Welcome to the Awesome Wallpaper App, a fantastic tool for finding and setting b
 *11) Leak Canary,*<br/>
 *12) Mockk,*<br/>
 *13) Splash Theme,*<br/>
-*13) Navigation,*<br/>
+*14) Navigation,*<br/>
 
 ## 📷 Pictures related to the application are located below
  #### 👉 Home Page
