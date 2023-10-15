@@ -2,19 +2,15 @@
 Welcome to the Awesome Wallpaper App, a fantastic tool for finding and setting beautiful wallpapers for your devices. This application is designed to provide users with a seamless and enjoyable experience for customizing their device backgrounds.
 
 ## My Use Technologies
-*1) RecyclerView*,<br/>
-*2)  ViewBinding*,<br/>
-*3) Mvvm*,<br/>
-*5) Repository*,<br/>
-*6) Room DataBase,*<br/>
-*7) Dagger Hilt,*<br/>
-*8) OkHttp and Retrofit,*<br/>
-*9) Picasso Caching,*<br/>
-*10) Network Caching,*<br/>
-*11) Leak Canary,*<br/>
-*12) Mockk,*<br/>
-*13) Splash Theme,*<br/>
-*14) Navigation,*<br/>
+1) [Mvvm](https://www.geeksforgeeks.org/android-build-a-movie-app-using-retrofit-and-mvvm-architecture-with-kotlin/),<br/>
+2) [Room Database](https://developer.android.com/training/data-storage/room),<br/>
+3) [Dagger Hilt](https://developer.android.com/training/dependency-injection/hilt-android),<br/>
+4) [OkHttp and Retrofit](https://www.androidhire.com/retrofit-tutorial-in-kotlin/),<br/>
+5) [Picasso Caching](https://hsmnzaydn.medium.com/picasso-i%CC%87le-i%CC%87mage-cache-877bbb8a0cb4),<br/>
+6) Network Caching,<br/>
+7) [Leak Canary](https://square.github.io/leakcanary/),<br/>
+8) Mockk,<br/>
+9) [Navigation](https://developer.android.com/guide/navigation/get-started),<br/>
 
 ## 📷 Pictures related to the application are located below
  #### 👉 Home Page
