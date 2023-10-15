@@ -1,4 +1,5 @@
 <h1 align="center">🎈 Wallpaper</h1></br>
+Welcome to the Awesome Wallpaper App, a fantastic tool for finding and setting beautiful wallpapers for your devices. This application is designed to provide users with a seamless and enjoyable experience for customizing their device backgrounds.
 
 ## My Use Technologies
 *1) RecyclerView*,<br/>
