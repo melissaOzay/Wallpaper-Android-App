@@ -50,7 +50,7 @@ class ImagesVM @Inject constructor(
             val currentList = imageList.value?.toMutableList() ?: mutableListOf()
             val imageList = categoryList.getOrNull()?.toMutableList() ?: mutableListOf()
             currentList.addAll(imageList)
-            _imageList.postValue(currentList)
+            _imageList.postValue(imageList)
             currentPage += 1
         }
     }

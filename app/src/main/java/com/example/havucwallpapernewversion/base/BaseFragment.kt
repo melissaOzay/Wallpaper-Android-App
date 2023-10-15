@@ -23,18 +23,15 @@ abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel> : Fragment() {
 
     abstract val viewModel: VM
 
-    lateinit var binding: VB
+    private var _binding: VB? = null
+    val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
-        if (::binding.isInitialized) {
-            return binding.root
-        }
-        binding = getViewBinding(inflater, container)
+        _binding  = getViewBinding(inflater, container)
         viewModel.loadingState.observe(viewLifecycleOwner) {
             if (it.equals(true)) {
                 if (loadingDialog == null) {
@@ -48,6 +45,10 @@ abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel> : Fragment() {
         }
         return binding.root
     }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -56,9 +57,4 @@ abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel> : Fragment() {
 
     }
 
-    /*    fun navigate(direction: NavDirections) {
-            loadingDialog?.showLoading()
-            findNavController().navigate(direction)
-            loadingDialog?.hideLoading()
-        }*/
 }

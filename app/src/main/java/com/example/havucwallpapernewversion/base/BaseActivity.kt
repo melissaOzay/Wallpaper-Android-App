@@ -13,7 +13,9 @@ AppCompatActivity() {
     private var loadingDialog: LoadingDialog? = null
 
 
-    lateinit var binding: B
+    private var _binding: B? = null
+    val binding get() = _binding!!
+
     open fun initialize() {}
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,14 +29,17 @@ AppCompatActivity() {
                 loadingDialog?.hideLoading()
             }
         }
-        binding = getViewBinding()
+        _binding = getViewBinding()
         setContentView(binding.root)
         initialize()
     }
 
     abstract fun getViewBinding(): B
 
-
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
 
 }
 

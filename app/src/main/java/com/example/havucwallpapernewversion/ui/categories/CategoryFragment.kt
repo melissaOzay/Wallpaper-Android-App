@@ -47,7 +47,10 @@ class CategoryFragment : BaseFragment<FragmentCategoryBinding, CategoryVM>() {
         }
 
     }
-
+    override fun onDestroyView() {
+        binding.recyclerView.adapter=null
+        super.onDestroyView()
+    }
     private fun observeImages() {
         viewModel.categoryList.observe(viewLifecycleOwner) { resource ->
             categoryAdapter.setListData(resource)

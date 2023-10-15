@@ -77,7 +77,7 @@ class ImageDetailActivity : BaseActivity<ImageDetailVM, ActivityImageDetailBindi
     private fun setWallpaper(url: String) {
         val policy = ThreadPolicy.Builder().permitAll().build()
         StrictMode.setThreadPolicy(policy)
-        val wpm = WallpaperManager.getInstance(this)
+        val wpm = WallpaperManager.getInstance(this.applicationContext)
         val ins: InputStream?
         try {
             ins =

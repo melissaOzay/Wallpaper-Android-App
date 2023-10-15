@@ -15,5 +15,4 @@ class HomeActivity : BaseActivity<HomeVM, ActivityImageScreenBinding>() {
         return ActivityImageScreenBinding.inflate(layoutInflater)
     }
 
-
 }

@@ -110,6 +110,48 @@ class ImageRepositoryImpl @Inject constructor(
                         false
                     )
                 )
+            } else if (query == "Star_wars") {
+                add(
+                    Image(
+                        "131",
+                        "https://cdn.wallpapersafari.com/17/32/rFvY91.jpg",
+                        "https://cdn.wallpapersafari.com/17/32/rFvY91.jpg",
+                        false
+                    )
+                )
+                add(
+                    Image(
+                        "132",
+                        "https://wallpapercosmos.com/w/full/1/7/7/227751-3000x1688-desktop-hd-star-wars-the-clone-wars-wallpaper-photo.jpg",
+                        "https://wallpapercosmos.com/w/full/1/7/7/227751-3000x1688-desktop-hd-star-wars-the-clone-wars-wallpaper-photo.jpg",
+                        false
+                    )
+                )
+                add(
+                    Image(
+                        "133",
+                        "https://img.freepik.com/premium-photo/star-wars-clone-wars-wallpapers_883586-686.jpg",
+                        "https://img.freepik.com/premium-photo/star-wars-clone-wars-wallpapers_883586-686.jpg",
+                        false
+                    )
+                )
+                add(
+                    Image(
+                        "134",
+                        "https://i.pinimg.com/originals/3a/81/b6/3a81b659fd69b910fa23c5b03606176a.jpg",
+                        "https://i.pinimg.com/originals/3a/81/b6/3a81b659fd69b910fa23c5b03606176a.jpg",
+                        false
+                    )
+                )
+                add(
+                    Image(
+                        "135",
+                        "https://images.wallpapersden.com/image/download/star-wars-the-bad-batch-2021_bGttam2UmZqaraWkpJRnZWltrWdlaW0.jpg",
+                        "https://images.wallpapersden.com/image/download/star-wars-the-bad-batch-2021_bGttam2UmZqaraWkpJRnZWltrWdlaW0.jpg",
+                        false
+                    )
+                )
+
             }else if (query.isNullOrEmpty()){
                 add(
                     Image(

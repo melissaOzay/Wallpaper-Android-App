@@ -37,7 +37,7 @@ class CategoryRepositoryImpl @Inject constructor(
                 Category(
                     "123",
                     "Animal",
-                    1,
+                    4,
                     "https://www.wallsauce.com/images/hero/cat/12/645/animal-mural.jpg"
                 )
             )
@@ -45,16 +45,16 @@ class CategoryRepositoryImpl @Inject constructor(
                 Category(
                     "124",
                     "Barbie",
-                    2,
+                    4,
                     "https://i.pinimg.com/236x/54/2a/8e/542a8e4edfd465380e7203f4db2e29b8.jpg"
                 )
             )
             add(
                 Category(
                     "125",
-                    "Animal",
-                    3,
-                    "https://i.pinimg.com/236x/54/2a/8e/542a8e4edfd465380e7203f4db2e29b8.jpg"
+                    "Star_wars",
+                    5,
+                    "https://i.pinimg.com/originals/3a/81/b6/3a81b659fd69b910fa23c5b03606176a.jpg"
                 )
             )
         }
