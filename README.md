@@ -12,6 +12,10 @@ Welcome to the Awesome Wallpaper App, a fantastic tool for finding and setting b
 8) [Navigation](https://developer.android.com/guide/navigation/get-started),<br/>
 
 ## 📷 Pictures related to the application are located below
+ #### 👉 Splash Page
+ 
+ <a href="#"><img width="20%" height="auto" src="https://github.com/melissaOzay/Wallpaper-Android-App/assets/106618067/e8551b5a-2d21-4abd-a4b2-304f09ae0b23" width="100" height="100"/></a>
+
  #### 👉 Home Page
  
  <a href="#"><img width="20%" height="auto" src="https://github.com/melissaOzay/wallpaper/assets/106618067/b77c8882-7cf2-4ea1-b68e-eb54041f0610" width="100" height="100"/></a>
