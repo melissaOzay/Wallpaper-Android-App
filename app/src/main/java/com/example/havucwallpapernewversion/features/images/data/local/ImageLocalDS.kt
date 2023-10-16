@@ -6,7 +6,6 @@ import com.example.havucwallpapernewversion.features.images.domain.model.Image
 interface ImageLocalDS {
     fun getImagesObservable(): List<ImageEntity>
     fun removeImage(imageId: String)
-    suspend fun getImagesSingle(): List<ImageEntity>
     fun addImage(imageEntity: ImageEntity)
     fun deleteImage(imageId: String)
     fun isImageFavori(imageId: String): Boolean

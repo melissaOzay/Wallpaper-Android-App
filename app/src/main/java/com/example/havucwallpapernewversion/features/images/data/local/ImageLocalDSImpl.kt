@@ -15,8 +15,6 @@ class ImageLocalDSImpl @Inject constructor(
 
     override fun removeImage(imageId: String) = imageDAO.deleteImage(imageId)
 
-    override suspend fun getImagesSingle(): List<ImageEntity> = imageDAO.getImagesSingle()
-
     override fun addImage(imageEntity: ImageEntity) {
         imageDAO.insert(imageEntity)
     }

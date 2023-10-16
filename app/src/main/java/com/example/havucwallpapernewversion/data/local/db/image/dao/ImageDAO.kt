@@ -18,9 +18,6 @@ interface ImageDAO {
     @Query("SELECT * FROM images")
     fun getImages(): List<ImageEntity>
 
-    @Query("SELECT * FROM images")
-    suspend fun getImagesSingle(): List<ImageEntity>
-
     @Query("SELECT EXISTS(SELECT * FROM images WHERE imageId = :imageId)")
     fun isImageFavori(imageId : String) : Boolean
 

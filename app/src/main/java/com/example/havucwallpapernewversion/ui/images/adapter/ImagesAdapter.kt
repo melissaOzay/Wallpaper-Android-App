@@ -50,7 +50,7 @@ class ImagesAdapter(private val listener: ImagesAdapterListener) :
                 listener.likeOrUnLike(item)
             }
             photo.setOnClickListener {
-                listener.clickItem(item.imagePullPath, item.isLiked, item.id)
+                listener.clickItem(item.imagePullPath, item.isLiked ?: false, item.id)
             }
         }
     }
@@ -63,7 +63,6 @@ class ImagesAdapter(private val listener: ImagesAdapterListener) :
 
     override fun onBindViewHolder(holder: CompanyViewHolder, position: Int) {
         holder.bindItems(images[position], listener)
-
     }
 
     override fun getItemCount(): Int {

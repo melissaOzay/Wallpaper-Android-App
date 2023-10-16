@@ -10,7 +10,6 @@ fun ImageResponse.toImage(isLiked: Boolean) = Image(
     imagePullPath = imagePullPath.orEmpty(),
     isLiked = isLiked
 )
-
 fun ImageEntity.toImage() = Image(
     id = imageId,
     path = imagePath,

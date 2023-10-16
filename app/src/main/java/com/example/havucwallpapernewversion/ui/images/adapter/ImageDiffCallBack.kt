@@ -25,12 +25,6 @@ class ImageDiffCallBack(
             oldList[oldItemPosition].id != newList[newItemPosition].id -> {
                 false
             }
-
-            oldList[oldItemPosition].isLiked != newList[newItemPosition].isLiked -> {
-                false
-
-            }
-
             else -> true
         }
     }
