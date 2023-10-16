@@ -9,8 +9,7 @@ Welcome to the Awesome Wallpaper App, a fantastic tool for finding and setting b
 5) [Picasso Caching](https://hsmnzaydn.medium.com/picasso-i%CC%87le-i%CC%87mage-cache-877bbb8a0cb4),<br/>
 6) Network Caching,<br/>
 7) [Leak Canary](https://square.github.io/leakcanary/),<br/>
-8) Mockk,<br/>
-9) [Navigation](https://developer.android.com/guide/navigation/get-started),<br/>
+8) [Navigation](https://developer.android.com/guide/navigation/get-started),<br/>
 
 ## 📷 Pictures related to the application are located below
  #### 👉 Home Page
