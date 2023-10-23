@@ -1,0 +1,16 @@
+{
+  "image":[
+  {
+    "categoryQuery": "123",
+    "categoryTitle": "Animal",
+    "count": 4,
+    "image": "https://www.wallsauce.com/images/hero/cat/12/645/animal-mural.jpg"
+  },
+  {
+    "categoryQuery": "124",
+    "categoryTitle": "Barbie",
+    "count": 4,
+    "image": "https://i.pinimg.com/236x/54/2a/8e/542a8e4edfd465380e7203f4db2e29b8.jpg"
+  }
+]
+}

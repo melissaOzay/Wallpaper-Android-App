@@ -5,14 +5,15 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.havucwallpapernewversion.base.BaseViewModel
 import com.example.havucwallpapernewversion.features.categories.domain.model.Category
-import com.example.havucwallpapernewversion.features.categories.domain.usecase.GetImagesCategoryUseCase
+import com.example.havucwallpapernewversion.features.categories.domain.usecase.GetCategoriesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class CategoryVM @Inject constructor(
-    private val getCategoryUseCase: GetImagesCategoryUseCase,
+    private val getCategoryUseCase: GetCategoriesUseCase,
 ) : BaseViewModel() {
 
     private val _categoryList = MutableLiveData<List<Category>>()
@@ -26,11 +27,13 @@ class CategoryVM @Inject constructor(
     private fun getCategory() {
         showLoading()
         viewModelScope.launch {
-            val categoryList = getCategoryUseCase.invoke()
-            hideLoading()
-            _categoryList.postValue(categoryList.getOrElse {
-                emptyList()
-            })
+            getCategoryUseCase.invoke().collect{
+                hideLoading()
+                _categoryList.postValue(it.getOrElse {
+                    emptyList()
+                })
+            }
+
         }
     }
 

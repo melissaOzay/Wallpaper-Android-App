@@ -2,6 +2,6 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:drawable="@drawable/ic_baseline_favorite_24"
         android:state_checked="true" />
-    <item android:drawable="@drawable/ic_baseline_favorite_border_24"
+    <item android:drawable="@drawable/ic_heart"
         android:state_checked="false" />
 </selector>

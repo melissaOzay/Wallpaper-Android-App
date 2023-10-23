@@ -4,5 +4,5 @@ import com.example.havucwallpapernewversion.features.account.data.model.response
 import com.example.havucwallpapernewversion.features.categories.data.model.CategoryResponse
 
 interface CategoryRemoteDS {
-    suspend fun getCategories():BaseResponse<List<CategoryResponse>>
+     suspend fun getCategories():BaseResponse<List<CategoryResponse>>
 }

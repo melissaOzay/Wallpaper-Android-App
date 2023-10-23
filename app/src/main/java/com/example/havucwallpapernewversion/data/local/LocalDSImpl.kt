@@ -22,8 +22,6 @@ class LocalDSImpl @Inject constructor(private val context: Context) : LocalDS {
     }
 
     override fun getAuthorizationKey(): String {
-        return runBlocking {
-            return@runBlocking context.appPreferencesDataStore.data.first()[AUTHORIZATION_KEY].orEmpty()
-        }
+        return "xWBHGCTNb6580aL"
     }
 }

@@ -3,7 +3,7 @@
     <item
         android:width="300dp"
         android:height="300dp"
-        android:drawable="@drawable/logo"
+        android:drawable="@drawable/ic_launcher_foreground"
         android:gravity="center" />
 
 </layer-list>

@@ -7,7 +7,7 @@ import retrofit2.http.Query
 
 interface ImageService {
     @GET("api/images")
-    suspend fun getImages(
+     suspend fun getImages(
         @Query("page") page: Int,
         @Query("imageType") imageType: String
     ): BaseResponse<List<ImageResponse>>

@@ -15,7 +15,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:src="@drawable/bg_splash" />
+        tools:src="@drawable/logo" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -29,10 +29,9 @@
 
         <ToggleButton
             android:id="@+id/iv_favorite"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
             android:layout_marginEnd="24dp"
-            android:backgroundTint="@color/grey"
             android:background="@drawable/fav_checked"
             android:textOff=""
             android:textOn=""/>
@@ -56,8 +55,8 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/iv_download"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
             android:backgroundTint="@color/grey"
             android:insetLeft="0dp"
             android:insetTop="0dp"
@@ -67,7 +66,7 @@
             app:icon="@drawable/ic_download"
             app:iconGravity="textStart"
             app:iconPadding="0dp"
-            app:iconSize="35dp"
+            app:iconSize="24dp"
             app:iconTint="#515055" />
     </LinearLayout>
 

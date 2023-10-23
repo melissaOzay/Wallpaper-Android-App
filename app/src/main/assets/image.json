@@ -1,0 +1,44 @@
+{
+  "Barbie": [
+    {
+      "id": "123",
+      "path": "https://img.freepik.com/premium-photo/barbie-doll-wallpapers-iphone-android-download-app-iphone-android_349618-2640.jpg",
+      "imagePullPath": "https://img.freepik.com/premium-photo/barbie-doll-wallpapers-iphone-android-download-app-iphone-android_349618-2640.jpg",
+      "isLiked": "false"
+    },
+    {
+      "id": "124",
+      "path": "https://c4.wallpaperflare.com/wallpaper/211/479/623/barbie-dolls-barbies-dolls-girls-wallpaper-preview.jpg",
+      "imagePullPath": "https://c4.wallpaperflare.com/wallpaper/211/479/623/barbie-dolls-barbies-dolls-girls-wallpaper-preview.jpg",
+      "isLiked": "false"
+    }
+  ],
+  "Animal": [
+    {
+      "id": "143",
+      "path": "https://i.pinimg.com/474x/68/a5/3e/68a53eb6bfc8909fdcf792d98dbf457c.jpg",
+      "imagePullPath": "https://i.pinimg.com/474x/68/a5/3e/68a53eb6bfc8909fdcf792d98dbf457c.jpg",
+      "isLiked": "false"
+    },
+    {
+      "id": "144",
+      "path": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT659NaxKDiP5TLynyuyTTlOLw37bsucGGSKg&usqp=CAU",
+      "imagePullPath": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT659NaxKDiP5TLynyuyTTlOLw37bsucGGSKg&usqp=CAU",
+      "isLiked": "false"
+    }
+  ],
+  "": [
+    {
+      "id": "160",
+      "path": "https://img.freepik.com/free-photo/painting-mountain-lake-with-mountain-background_188544-9126.jpg?w=2000",
+      "imagePullPath": "https://img.freepik.com/free-photo/painting-mountain-lake-with-mountain-background_188544-9126.jpg?w=2000",
+      "isLiked": "false"
+    },
+    {
+      "id": "161",
+      "path": "https://marketplace.canva.com/EAE-xnqWvJk/1/0/1600w/canva-retro-smoke-and-round-light-desktop-wallpapers-JLofAI27pCg.jpg",
+      "imagePullPath": "https://marketplace.canva.com/EAE-xnqWvJk/1/0/1600w/canva-retro-smoke-and-round-light-desktop-wallpapers-JLofAI27pCg.jpg",
+      "isLiked": "false"
+    }
+  ]
+}

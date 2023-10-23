@@ -10,6 +10,9 @@ import com.example.havucwallpapernewversion.features.images.domain.usecases.GetF
 import com.example.havucwallpapernewversion.features.images.domain.usecases.GetImagesUseCase
 import com.example.havucwallpapernewversion.features.images.domain.usecases.LikeAndUnLikeImageUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -40,7 +43,10 @@ class ImagesVM @Inject constructor(
                 _imageList.postValue(imageList)
                 currentPage += 1
 
+            } else {
+                _errorMessage.postValue(response.exceptionOrNull()?.message)
             }
+
         }
     }
 

@@ -57,7 +57,7 @@ class NetworkModule {
             .build()
 
         return Retrofit.Builder()
-            .baseUrl("https://images213.com/")
+            .baseUrl("https://image.com/")
             .addConverterFactory(gsonConverterFactory)
             .client(okHttpClient)
             .build()

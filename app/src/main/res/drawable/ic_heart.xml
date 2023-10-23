@@ -1,0 +1,7 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/bg_circle" />
+    <item android:drawable="@drawable/ic_favorite"
+        android:width="18dp"
+        android:height="18dp"
+        android:gravity="center" />
+</layer-list>

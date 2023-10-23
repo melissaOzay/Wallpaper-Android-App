@@ -7,7 +7,7 @@ import retrofit2.http.Query
 
 interface CategoryService {
     @GET("api/images/categories")
-    suspend fun getCategories(
+     suspend fun getCategories(
         @Query("imageType") imageType: String
     ): BaseResponse<List<CategoryResponse>>
 }

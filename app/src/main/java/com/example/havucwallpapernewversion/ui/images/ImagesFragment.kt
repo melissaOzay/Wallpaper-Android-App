@@ -1,5 +1,6 @@
 package com.example.havucwallpapernewversion.ui.images
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -39,7 +40,6 @@ class ImagesFragment : BaseFragment<FragmentImageScreenBinding, ImagesVM>() {
             }
         })
     }
-
     override fun getViewBinding(
         inflater: LayoutInflater, container: ViewGroup?, attachToParent: Boolean
     ): FragmentImageScreenBinding {

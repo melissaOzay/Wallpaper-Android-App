@@ -5,6 +5,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.havucwallpapernewversion.data.local.db.category.entity.CategoryEntity
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface CategoryDAO {
@@ -12,6 +13,6 @@ interface CategoryDAO {
     fun insert(categoryEntity: CategoryEntity)
 
     @Query("SELECT * FROM categories")
-    suspend fun getCategories(): List<CategoryEntity>
+    fun getCategories(): Flow<List<CategoryEntity>>
 
 }

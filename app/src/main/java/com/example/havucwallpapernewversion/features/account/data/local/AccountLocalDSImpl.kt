@@ -12,6 +12,6 @@ class AccountLocalDSImpl @Inject constructor(
     }
 
     override fun getAuthorizationKey(): String {
-        return localDS.getAuthorizationKey()
+        return "xWBHGCTNb6580aL"
     }
 }
